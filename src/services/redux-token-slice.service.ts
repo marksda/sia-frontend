@@ -4,7 +4,7 @@ import { ICredential } from "../features/entities/credential";
 import { TokenAPI } from "./api-rtkquery-service";
 
 
-const fetchToken = createAsyncThunk(
+export const fetchToken = createAsyncThunk(
     'token/fetchToken',
     async (credential: ICredential, _thunkApi: any) => {    
         const response = await TokenAPI.getToken(credential); 
