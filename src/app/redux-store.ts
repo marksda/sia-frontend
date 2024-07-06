@@ -4,7 +4,6 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { siaApi } from "../services/api-rtkquery-service";
 
-
 const persistConfig = {
     key: 'root',
     storage
