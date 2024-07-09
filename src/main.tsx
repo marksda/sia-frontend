@@ -4,21 +4,28 @@ import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { Provider } from 'react-redux';
 import { persistor, store } from './app/redux-store.ts';
 import { PersistGate } from 'redux-persist/integration/react';
-import App from './App.tsx';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { HomeScreen } from './scenes/home/home-page.component.tsx';
 // import './index.css';
 
 
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Home />,
-  //   errorElement: <ErrorPage />
-  // },
-  // {
-  //   path: "login",
-  //   element: <LoginPage />,
-  // },
+  {
+    id: "root",
+    path: "/",
+    Component: Layout,
+    children: [
+      {
+        index: true,
+        path: "home",
+        element: <HomeScreen />,
+      },
+      {
+        path: "login",
+        // element: <SignInScreen />,
+      },
+    ]
+  }
 ]);
 
 const container = document.getElementById('root');
@@ -28,9 +35,12 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <FluentProvider theme={webLightTheme}>
-        <App />
         <RouterProvider router={router} />
       </FluentProvider>
     </PersistGate>    
   </Provider>    
 );
+
+function Layout() {
+  return <Outlet />;
+}
