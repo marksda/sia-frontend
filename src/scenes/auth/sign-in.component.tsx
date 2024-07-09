@@ -19,7 +19,6 @@ export const SignInScreen = (): ReactElement => {
   const [disableForm, setDisableForm] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<ICredential> = (data): void => {
-    console.log(data);
     setDisableForm(true);
     dispatch(fetchToken(data)).then((_dataHasil) => {
       setDisableForm(false);
