@@ -1,6 +1,7 @@
 import { Button } from "@fluentui/react-components";
 import type { ButtonProps } from "@fluentui/react-components";
 import { useAppSelector } from "../../app/redux-hooks";
+import { Navigate } from "react-router-dom";
 
 export const HomeScreen = (props: ButtonProps): React.ReactElement => {
     const token = useAppSelector(state => state.persisted.token); 
@@ -8,7 +9,10 @@ export const HomeScreen = (props: ButtonProps): React.ReactElement => {
     return (
         <>
         {
-            token == null ? <p>Belum Login</p>:<Button {...props}>Example</Button>
+            token == null ? 
+            <Navigate to="/login" replace={true} />
+            :
+            <Button {...props}>Example</Button>
         }
         </>        
     );

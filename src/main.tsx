@@ -6,6 +6,7 @@ import { persistor, store } from './app/redux-store.ts';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { HomeScreen } from './scenes/home/home-page.component.tsx';
+import { SignInScreen } from './scenes/auth/sign-in.component.tsx';
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        // element: <SignInScreen />,
+        element: <SignInScreen />,
       },
     ]
   }
