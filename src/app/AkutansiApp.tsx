@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../layout/akutansi-app/router-layout";
+import HomeScreen from "../scenes/akutansi-app/home-page.component";
+import SignInScreen from "../scenes/akutansi-app/sign-in.component";
 
 const AkutansiApp = () => {
     return (

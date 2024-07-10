@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tokenReducer from "../services/redux-token-slice.service";
+import tokenReducer from "../../services/redux-token-slice.service";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { siaApi } from "../services/api-rtkquery-service";
+import { siaApi } from "../../services/api-rtkquery-service";
 
 const persistConfig = {
     key: 'root',
