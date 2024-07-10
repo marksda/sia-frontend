@@ -9,7 +9,7 @@ const persistConfig = {
     storage
 };
 
-const persistedReducer = persistReducer(persistConfig, tokenReducer)
+const persistedReducer = persistReducer(persistConfig, tokenReducer);
 
 export const store = configureStore({
     reducer: {
@@ -21,6 +21,6 @@ export const store = configureStore({
                                         .concat(siaApi.middleware)
 });
 
-export const persistor = persistStore(store)
-export type AppDispatch = typeof store.dispatch
-export type RootState = ReturnType<typeof store.getState>
+export const persistor = persistStore(store);
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
