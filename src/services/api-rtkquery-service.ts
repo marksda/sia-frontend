@@ -112,7 +112,7 @@ export const siaApi = createApi({
                 invalidatesTags: (result) => result ? ['Barang']:['Kosong']
             }),
             getDaftarBarang: builder.query<IBarang[], IQueryParamFilters>({
-                query: (queryParams) => ({
+                query: (_queryParams) => ({
                     url: `/barang/list`,
                     method: 'GET',
                 }),
