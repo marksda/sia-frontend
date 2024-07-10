@@ -1,5 +1,5 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../../app/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../features/state-engine/redux-hooks';
 import { ChangeEvent, ReactElement, useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ICredential } from '../../features/entities/credential';
@@ -8,7 +8,7 @@ import { CredentialSchema } from '../../features/schema-resolver/zod-schema';
 import { Button, Field, Input, InputOnChangeData } from '@fluentui/react-components';
 import { Navigate } from 'react-router-dom';
 
-export const SignInScreen = (): ReactElement => {
+const SignInScreen = (): ReactElement => {
   const token = useAppSelector(state => state.persisted.token); 
   const dispatch = useAppDispatch();
   const { handleSubmit, control} = useForm<ICredential>(
@@ -29,11 +29,7 @@ export const SignInScreen = (): ReactElement => {
       setDisableForm(false);
     });      
   };
-
-//   const onError: SubmitErrorHandler<ICredential> = async (err) => {
-//     console.log('error', err);
-// };
-
+  
   return token == null ? (
       <>
         <Controller
@@ -90,3 +86,5 @@ export const SignInScreen = (): ReactElement => {
       </>
       ) : <Navigate to="/" replace={true} />;
 };
+
+export default SignInScreen;
