@@ -8,25 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 import HomeApp from './scenes/home/home-page.component.tsx';
 
 
-// const router = createBrowserRouter([
-//   {
-//     id: "root",
-//     path: "/",
-//     Component: Layout,
-//     children: [
-//       {
-//         index: true,
-//         path: "home",
-//         element: <HomeScreen />,
-//       },
-//       {
-//         path: "login",
-//         element: <SignInScreen />,
-//       },
-//     ]
-//   }
-// ]);
-
 const container = document.getElementById('root');
 const root = createRoot(container!);
 

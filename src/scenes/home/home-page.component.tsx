@@ -4,7 +4,7 @@ import { useAppSelector } from "../../app/redux-hooks";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { SignInScreen } from "../auth/sign-in.component";
 
-export default function HomeApp() {
+const HomeApp = () => {
     return (
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -35,3 +35,5 @@ function HomeScreen(props: ButtonProps) {
          
     );
 };
+
+export default HomeApp;
