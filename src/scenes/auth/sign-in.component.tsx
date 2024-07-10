@@ -21,6 +21,7 @@ export const SignInScreen = (): ReactElement => {
   const onSubmit: SubmitHandler<ICredential> = (data): void => {
     setDisableForm(true);
     dispatch(fetchToken(data)).then((_dataHasil) => {
+      console.log(_dataHasil);
       setDisableForm(false);
     }).catch(() => {
       setDisableForm(false);
