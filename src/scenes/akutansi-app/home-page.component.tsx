@@ -16,9 +16,5 @@ const HomeScreen = () => {
     isPortrait == true ? <PortraitHomeScreen /> : <LandScapeHomeScreen />
 };
 
-
-
-
-
 export default HomeScreen;
 
