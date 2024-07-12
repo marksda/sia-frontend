@@ -1,7 +1,11 @@
-import { Button, ButtonProps } from "@fluentui/react-components";
+import AppBar from "../../navigation/nav-app-bar";
 
-const LandScapeHomeScreen = (props: ButtonProps) => {
-    return <Button {...props}>Landscape</Button>;
+const LandScapeHomeScreen = () => {
+    return (
+        <div>
+            <AppBar/>
+        </div>        
+    );
 };
 
 export default LandScapeHomeScreen;
