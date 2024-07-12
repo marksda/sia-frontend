@@ -8,7 +8,7 @@ import LandScapeHomeScreen from "../../layout/akutansi-app/home-landscape";
 
 const HomeScreen = () => {    
     const token = useAppSelector(state => state.persisted.token); 
-    const isPortrait = useMediaQuery({ maxWidth: 480 })
+    const isPortrait = useMediaQuery({ maxWidth: 600 });
 
     return token == null ? 
     <Navigate to="/login" replace={true} /> 
