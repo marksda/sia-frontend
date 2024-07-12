@@ -8,10 +8,7 @@ const HomeScreen = () => {
     const token = useAppSelector(state => state.persisted.token); 
     const isPortrait = useMediaQuery({ maxWidth: 600 });
 
-    return token == null ? 
-    <Navigate to="/login" replace={true} /> 
-    : 
-    isPortrait == true ? <PortraitHomeScreen /> : <LandScapeHomeScreen />
+    return token == null ? <Navigate to="/login" replace={true} /> : isPortrait == true ? <PortraitHomeScreen /> : <LandScapeHomeScreen />;
 };
 
 export default HomeScreen;
