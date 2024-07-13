@@ -26,6 +26,7 @@ const useStyles = makeStyles({
     },
 
 });
+
 const PaneNavigator = () => {
     const styles = useStyles();
 
@@ -33,13 +34,13 @@ const PaneNavigator = () => {
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
-                    <NavLink to="/messages" className="active">Rekening</NavLink>
+                    <NavLink to="/akutansi/rekening">Rekening</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/messages">Laporan</NavLink>
+                    <NavLink to="/akutansi/laporan">Laporan</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/messages">Pengaturan</NavLink>
+                    <NavLink to="/akutansi/pengaturan">Pengaturan</NavLink>
                 </li>
             </ul>            
         </nav>

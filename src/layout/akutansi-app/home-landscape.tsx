@@ -3,19 +3,20 @@ import AppBar from "../../navigation/nav-app-bar";
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import PaneNavigator from "../../navigation/nav-pane";
+import { Outlet } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
         display: "flex",
-        backgroundColor: "#fff",
-        width: "100%",
+        // backgroundColor: "#fff",
+        // width: "100%",
     },
     content: {
         flex: "1",    
-        display: "grid",
-        gridTemplateColumns: "100%",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        // display: "grid",
+        // gridTemplateColumns: "100%",
+        // justifyContent: "flex-start",
+        // alignItems: "flex-start",
         // gridRowGap: tokens.spacingVerticalXXL,
         // gridAutoRows: "max-content",
     },
@@ -73,6 +74,7 @@ const LandScapeHomeScreen = () => {
             </Drawer>
             <div className={styles.content}>
                 <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
+                <Outlet />
             </div>
         </div>        
     );
