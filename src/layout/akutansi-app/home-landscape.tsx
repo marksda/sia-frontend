@@ -1,4 +1,4 @@
-import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, useRestoreFocusSource } from "@fluentui/react-components";
+import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
 import AppBar from "../../navigation/nav-app-bar";
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
@@ -22,10 +22,10 @@ const useStyles = makeStyles({
     },
     drawer: {
         height: "100vh",
-        backgroundColor: "rgb(237 237 237)",
+        backgroundColor: tokens.colorNeutralBackground2, 
     },
     drawerHeader: {
-        padding: "12px 24px 8px 24px"
+        padding: "8px 24px 8px 24px"
     },
     drawerBody: {
         padding: "0px 0px 25px 0px"
@@ -49,7 +49,7 @@ const LandScapeHomeScreen = () => {
             <Drawer
                 {...restoreFocusSourceAttributes}
                 type="inline"
-                separator={false}
+                separator={true}
                 open={isOpen}
                 onOpenChange={(_, { open }) => setIsOpen(open)}
                 className={styles.drawer}

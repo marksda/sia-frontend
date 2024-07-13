@@ -6,40 +6,40 @@ import { FC } from "react";
 
 
 interface IAkutansiRouteProvider {
-    mainPath: string;
+  mainPath: string;
 };
 
 const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
-    const router = createBrowserRouter([
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (<AkutansiApp />)
+    },
+    {
+      path: `/${mainPath}`,
+      element: (<HomeScreen />),
+      children: [
         {
-          path: "/",
-          element: (<AkutansiApp />)
+          path: "rekening",
+          element: (<div style={{color: 'black'}}>Tes rekening</div>)
         },
         {
-          path: `/${mainPath}`,
-          element: (<HomeScreen />),
-          children: [
-            {
-              path: "rekening",
-              element: (<div style={{color: 'black'}}>Tes rekening</div>)
-            },
-            {
-              path: "laporan",
-              element: (<div style={{color: 'black'}}>Tes laporan</div>)
-            },
-            {
-              path: "pengaturan",
-              element: (<div style={{color: 'black'}}>Tes pengaturan</div>)
-            }
-          ]
+          path: "laporan",
+          element: (<div style={{color: 'black'}}>Tes laporan</div>)
         },
         {
-          path: "/login",
-          element: (<SignInScreen />)
+          path: "pengaturan",
+          element: (<div style={{color: 'black'}}>Tes pengaturan</div>)
         }
-    ]);
-    
-    return <RouterProvider router={router} />;         
+      ]
+    },
+    {
+      path: "/login",
+      element: (<SignInScreen />)
+    }
+  ]);
+  
+  return <RouterProvider router={router} />;         
 };
 
 export default AkutansiRouteProvider;

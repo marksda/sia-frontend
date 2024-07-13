@@ -1,4 +1,4 @@
-import { Button, makeStyles, Title3 } from "@fluentui/react-components";
+import { Button, makeStyles, Subtitle1 } from "@fluentui/react-components";
 import { tokens } from "@fluentui/react-components";
 import {
     LineHorizontal320Filled
@@ -13,8 +13,8 @@ interface IAppBarFluentUIProps {
 const useStyles = makeStyles({
     container: {
         display: "flex",
-        backgroundColor: tokens.colorBrandBackground,
-        height: tokens.lineHeightHero900,
+        backgroundColor: tokens.colorCompoundBrandForeground1,
+        height: tokens.lineHeightHero800,
         color: tokens.colorStrokeFocus1,
     },
     btnApp: {
@@ -37,12 +37,12 @@ const AppBar: FC<IAppBarFluentUIProps> = ({isOpen, openDrawer}) => {
                 <Button 
                 shape="square"
                 icon={<LineHorizontal320Filled className={styles.iconApp}/>}
-                appearance="primary"
+                appearance="transparent"
                 className={styles.btnApp}
                 onClick={openDrawer}
             />
             }
-            <Title3 className={styles.titleApp}>Laporan</Title3>
+            <Subtitle1 className={styles.titleApp}>Laporan</Subtitle1>
         </div>
     );
 };
