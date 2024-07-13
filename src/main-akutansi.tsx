@@ -14,7 +14,7 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <FluentProvider theme={webLightTheme}>
-        <AkutansiRouteProvider />
+        <AkutansiRouteProvider mainPath='home'/>
       </FluentProvider>
     </PersistGate>    
   </Provider>    

@@ -34,13 +34,13 @@ const PaneNavigator = () => {
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
-                    <NavLink to="/akutansi/rekening">Rekening</NavLink>
+                    <NavLink to="/home/rekening">Rekening</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/akutansi/laporan">Laporan</NavLink>
+                    <NavLink to="/home/laporan">Laporan</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/akutansi/pengaturan">Pengaturan</NavLink>
+                    <NavLink to="/home/pengaturan">Pengaturan</NavLink>
                 </li>
             </ul>            
         </nav>
