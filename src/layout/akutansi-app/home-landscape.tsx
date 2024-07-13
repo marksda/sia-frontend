@@ -2,6 +2,7 @@ import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles
 import AppBar from "../../navigation/nav-app-bar";
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
+import PaneNavigator from "../../navigation/nav-pane";
 
 const useStyles = makeStyles({
     root: {
@@ -59,11 +60,11 @@ const LandScapeHomeScreen = () => {
                         />
                         }
                     >
-                        Default Drawer
+                        SIA
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody>
-                    <p>Drawer content</p>
+                    <PaneNavigator />
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
