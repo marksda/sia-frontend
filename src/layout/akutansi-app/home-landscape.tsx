@@ -20,10 +20,14 @@ const useStyles = makeStyles({
         // gridAutoRows: "max-content",
     },
     drawer: {
-        height: "100vh"
+        height: "100vh",
+        backgroundColor: "rgb(237 237 237)",
     },
     drawerHeader: {
         padding: "12px 24px 8px 24px"
+    },
+    drawerBody: {
+        padding: "0px 0px 25px 0px"
     },
 });
 
@@ -44,7 +48,7 @@ const LandScapeHomeScreen = () => {
             <Drawer
                 {...restoreFocusSourceAttributes}
                 type="inline"
-                separator
+                separator={false}
                 open={isOpen}
                 onOpenChange={(_, { open }) => setIsOpen(open)}
                 className={styles.drawer}
@@ -63,7 +67,7 @@ const LandScapeHomeScreen = () => {
                         SIA
                     </DrawerHeaderTitle>
                 </DrawerHeader>
-                <DrawerBody>
+                <DrawerBody className={styles.drawerBody}>
                     <PaneNavigator />
                 </DrawerBody>
             </Drawer>
