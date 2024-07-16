@@ -3,6 +3,7 @@ import AkutansiApp from "../app/AkutansiApp";
 import HomeScreen from "../scenes/akutansi-app/home-page.component";
 import SignInScreen from "../scenes/akutansi-app/sign-in.component";
 import { FC } from "react";
+import RekeningScreen from "../scenes/akutansi-app/rekening-page.component";
 
 
 interface IAkutansiRouteProvider {
@@ -21,7 +22,7 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
       children: [
         {
           path: "rekening",
-          element: (<div style={{color: 'black'}}>Tes rekening</div>)
+          element: (<RekeningScreen />)
         },
         {
           path: "laporan",

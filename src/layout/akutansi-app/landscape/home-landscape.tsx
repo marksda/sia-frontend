@@ -1,6 +1,6 @@
 import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
 import AppBar from "../../../navigation/nav-app-bar";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import PaneNavigator from "../../../navigation/nav-pane";
 import { Outlet } from "react-router-dom";
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     },
 });
 
-const LandScapeHomeScreen = () => {
+const LandScapeHomeScreen: FC = () => {
     const styles = useStyles();
 
     const [isOpen, setIsOpen] = useState(false);

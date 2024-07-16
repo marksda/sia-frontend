@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     },
 });
 
-const LandScapeRekeningScreen: FC = () => {
+const PortraitRekeningScreen: FC = () => {
     const styles = useStyles();
 
     return (
@@ -16,4 +16,4 @@ const LandScapeRekeningScreen: FC = () => {
     );
 };
 
-export default LandScapeRekeningScreen;
+export default PortraitRekeningScreen;
