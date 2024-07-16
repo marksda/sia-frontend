@@ -11,18 +11,21 @@ const useStyles = makeStyles({
         padding: "0px 8px 0px 0px",
         // backgroundColor: "rgb(247 247 247)",
         '& li a': {
-            display: "block",
-            padding: "12px 0px 12px 24px",
+            display: 'flex',
+            flex: 1,
+            alignItems: "center",
+            padding: "12px 0px 12px 16px",
             color: "#000",
             textDecoration: "none",
-            // lineHeight: "24px",
+            '& svg': {
+                paddingRight: "8px",
+            },
             '&.active': {
                 backgroundColor: tokens.colorNeutralBackground2Selected,
                 color: "colorStrokeFocus2",
-                // borderLeft: "4px solid #0f6cbd"
             },
             '&:hover:not(.active)': {
-                backgroundColor: tokens.colorNeutralBackground2Hover,  // "rgb(200 200 201)",
+                backgroundColor: tokens.colorNeutralBackground2Hover,  
                 color: "colorStrokeFocus2"
             }
         }
@@ -76,13 +79,22 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
-                    <NavLink to="/home/rekening">Rekening</NavLink>
+                    <NavLink to="/home/rekening">                            
+                        <BookRegular className={styles.icon24}/>    
+                        <span>Rekening</span>                        
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/home/laporan">Laporan</NavLink>
+                    <NavLink to="/home/laporan">
+                        <BookRegular className={styles.icon24}/> 
+                        <span>Laporan</span>
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/home/pengaturan">Pengaturan</NavLink>
+                    <NavLink to="/home/pengaturan">
+                        <BookRegular className={styles.icon24}/> 
+                        <span>pengaturan</span>
+                    </NavLink>
                 </li>
             </ul>            
         </nav>

@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AkutansiApp from "../app/AkutansiApp";
-import HomeScreen from "../scenes/akutansi-app/home-page.component";
-import SignInScreen from "../scenes/akutansi-app/sign-in.component";
+import AkutansiApp from "../../app/AkutansiApp";
+import HomeScreen from "../../scenes/akutansi-app/home-page.component";
+import SignInScreen from "../../scenes/akutansi-app/sign-in.component";
 import { FC } from "react";
-import RekeningScreen from "../scenes/akutansi-app/rekening-page.component";
+import RekeningScreen from "../../scenes/akutansi-app/rekening-page.component";
 
 
 interface IAkutansiRouteProvider {

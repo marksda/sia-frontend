@@ -1,8 +1,8 @@
 import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
-import AppBar from "../../../navigation/nav-app-bar";
+import AppBar from "../../../navigation/akutansi-app/akutansi-nav-app-bar";
 import { FC, useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
-import PaneNavigator from "../../../navigation/nav-pane";
+import PaneNavigator from "../../../navigation/akutansi-app/akutansi-nav-pane";
 import { Outlet } from "react-router-dom";
 
 const useStyles = makeStyles({
