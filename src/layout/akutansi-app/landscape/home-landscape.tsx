@@ -1,25 +1,25 @@
 import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
-import AppBar from "../../navigation/nav-app-bar";
+import AppBar from "../../../navigation/nav-app-bar";
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
-import PaneNavigator from "../../navigation/nav-pane";
+import PaneNavigator from "../../../navigation/nav-pane";
 import { Outlet } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
         display: "flex",
-        // backgroundColor: "#fff",
-        // width: "100%",
     },
     content: {
         flex: "1",    
         display: "grid",
-        gridTemplateColumns: "100%",
-        gridTemplateRows: "40px auto"
-        // justifyContent: "flex-start",
-        // alignItems: "flex-start",
-        // gridRowGap: tokens.spacingVerticalXXL,
-        // gridAutoRows: "max-content",
+        gridTemplateColumns: "auto",
+        gridTemplateRows: "40px auto",
+    },
+    detailContent: {
+        display: "grid",
+        gridTemplateColumns: "45px auto",
+        gridTemplateRows: "auto",
+        gridTemplateAreas: `"main main"`,
     },
     drawer: {
         height: "100vh",
@@ -75,8 +75,10 @@ const LandScapeHomeScreen = () => {
             </Drawer>
             <div className={styles.content}>
                 <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
-                <PaneNavigator mini={true} />
-                <Outlet />
+                <div className={styles.detailContent}>
+                    <PaneNavigator mini={true} show={!isOpen}/>
+                    <Outlet />
+                </div>
             </div>
         </div>        
     );

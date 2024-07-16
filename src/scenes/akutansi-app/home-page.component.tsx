@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
-import PortraitHomeScreen from "../../layout/akutansi-app/home-portrait";
-import LandScapeHomeScreen from "../../layout/akutansi-app/home-landscape";
+import LandScapeHomeScreen from "../../layout/akutansi-app/landscape/home-landscape";
+import PortraitHomeScreen from "../../layout/akutansi-app/portrait/home-portrait";
 
 const HomeScreen = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
