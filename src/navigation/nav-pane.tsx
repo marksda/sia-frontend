@@ -68,6 +68,7 @@ interface IPaneNavigatorProp {
     mini: boolean;
     show?: boolean;
 };
+
 const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
     const styles = useStyles();
 
@@ -124,4 +125,3 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
 };
 
 export default PaneNavigator;
-
