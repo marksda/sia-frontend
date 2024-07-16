@@ -13,15 +13,15 @@ interface IAppBarFluentUIProps {
 const useStyles = makeStyles({
     container: {
         display: "flex",
-        backgroundColor: tokens.colorCompoundBrandForeground1,
+        backgroundColor: tokens.colorBrandBackground,
         height: tokens.lineHeightHero800,
-        color: tokens.colorStrokeFocus1,
+        color: tokens.colorNeutralForegroundInverted,
     },
     btnApp: {
         margin: '8px',
     },
     iconApp: {
-        color: tokens.colorStrokeFocus1,
+        color: tokens.colorNeutralForegroundInverted,
     },
     titleApp: {
         paddingLeft: "32px",

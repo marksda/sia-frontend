@@ -17,9 +17,12 @@ const useStyles = makeStyles({
     },
     detailContent: {
         display: "grid",
-        gridTemplateColumns: "45px auto",
+        gridTemplateColumns: "55px auto",
         gridTemplateRows: "auto",
         gridTemplateAreas: `"main main"`,
+        '& .hideMiniPanelnav': {
+            gridArea: "main",
+        },
     },
     drawer: {
         height: "100vh",
@@ -77,7 +80,9 @@ const LandScapeHomeScreen: FC = () => {
                 <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
                 <div className={styles.detailContent}>
                     <PaneNavigator mini={true} show={!isOpen}/>
-                    <Outlet />
+                    <div className={isOpen == true? 'hideMiniPanelnav':'showMiniPanelnav'}>
+                        <Outlet />
+                    </div>                    
                 </div>
             </div>
         </div>        
