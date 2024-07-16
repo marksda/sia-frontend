@@ -1,4 +1,5 @@
 import { makeStyles, tokens } from "@fluentui/react-components";
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 
@@ -28,10 +29,13 @@ const useStyles = makeStyles({
 
 });
 
-const PaneNavigator = () => {
+interface IPaneNavigatorProp {
+    mini: boolean;
+};
+const PaneNavigator: FC<IPaneNavigatorProp> = ({mini}) => {
     const styles = useStyles();
 
-    return (
+    return mini == false ?
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
@@ -45,7 +49,8 @@ const PaneNavigator = () => {
                 </li>
             </ul>            
         </nav>
-    );
+        :
+        null;
 };
 
 export default PaneNavigator;

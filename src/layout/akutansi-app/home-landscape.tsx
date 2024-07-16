@@ -13,8 +13,9 @@ const useStyles = makeStyles({
     },
     content: {
         flex: "1",    
-        // display: "grid",
-        // gridTemplateColumns: "100%",
+        display: "grid",
+        gridTemplateColumns: "100%",
+        gridTemplateRows: "40px auto"
         // justifyContent: "flex-start",
         // alignItems: "flex-start",
         // gridRowGap: tokens.spacingVerticalXXL,
@@ -69,11 +70,12 @@ const LandScapeHomeScreen = () => {
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody className={styles.drawerBody}>
-                    <PaneNavigator />
+                    <PaneNavigator mini={false} />
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
                 <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
+                <PaneNavigator mini={true} />
                 <Outlet />
             </div>
         </div>        
