@@ -21,7 +21,7 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
       element: (<HomeScreen />),
       children: [
         {
-          path: "rekening",
+          path: "pembukuan",
           element: (<RekeningScreen />)
         },
         {

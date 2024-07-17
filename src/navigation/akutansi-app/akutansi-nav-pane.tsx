@@ -79,9 +79,9 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
-                    <NavLink to="/home/rekening">                            
+                    <NavLink to="/home/pembukuan">                            
                         <BookRegular className={styles.icon24}/>    
-                        <span>Rekening</span>                        
+                        <span>Pembukuan</span>                        
                     </NavLink>
                 </li>
                 <li>
@@ -104,12 +104,12 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
             <ul className={styles.containerMiniMenu}>                
                 <li>
                     <Tooltip 
-                        content={{ children: "Rekening", className: styles.tooltip }} 
+                        content={{ children: "Pembukuan", className: styles.tooltip }} 
                         relationship="label" 
                         withArrow
                         positioning="after"
                     >
-                        <NavLink to="/home/rekening">                            
+                        <NavLink to="/home/pembukuan">                            
                             <BookRegular className={styles.icon24}/>                            
                         </NavLink>
                     

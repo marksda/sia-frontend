@@ -1,4 +1,4 @@
-import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, useRestoreFocusSource } from "@fluentui/react-components";
+import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
 import AppBar from "../../../navigation/akutansi-app/akutansi-nav-app-bar";
 import { FC, useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
@@ -22,12 +22,12 @@ const useStyles = makeStyles({
         gridTemplateAreas: `"main main"`,
         '& .hideMiniPanelnav': {
             gridArea: "main",
-            // background: tokens.colorNeutralBackground2,
+            background: tokens.colorNeutralBackground2,
         },
-        // '& .showMiniPanelnav': {
-            // background: tokens.colorNeutralBackground2Selected,
-            // border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
-        // },
+        '& .showMiniPanelnav': {
+            background: tokens.colorNeutralBackground2Selected,
+            border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
+        },
     },
     drawer: {
         height: "100vh",
