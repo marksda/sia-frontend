@@ -6,6 +6,7 @@ import {
 import { FC } from "react";
 
 interface IAppBarFluentUIProps {
+    title: string,
     isOpen: boolean;
     openDrawer: () => void;
 };
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
     }
 });
 
-const AppBar: FC<IAppBarFluentUIProps> = ({isOpen, openDrawer}) => {
+const AppBar: FC<IAppBarFluentUIProps> = ({isOpen, openDrawer, title}) => {
     const styles = useStyles();
     return (
         <div className={styles.container}>
@@ -42,7 +43,7 @@ const AppBar: FC<IAppBarFluentUIProps> = ({isOpen, openDrawer}) => {
                 onClick={openDrawer}
             />
             }
-            <Subtitle1 className={styles.titleApp}>Laporan</Subtitle1>
+            <Subtitle1 className={styles.titleApp}>{title}</Subtitle1>
         </div>
     );
 };

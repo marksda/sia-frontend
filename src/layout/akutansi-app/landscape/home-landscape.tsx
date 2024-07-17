@@ -1,9 +1,9 @@
-import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, tokens, useRestoreFocusSource } from "@fluentui/react-components";
+import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles, useRestoreFocusSource } from "@fluentui/react-components";
 import AppBar from "../../../navigation/akutansi-app/akutansi-nav-app-bar";
 import { FC, useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import PaneNavigator from "../../../navigation/akutansi-app/akutansi-nav-pane";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -22,24 +22,30 @@ const useStyles = makeStyles({
         gridTemplateAreas: `"main main"`,
         '& .hideMiniPanelnav': {
             gridArea: "main",
+            // background: tokens.colorNeutralBackground2,
         },
+        // '& .showMiniPanelnav': {
+            // background: tokens.colorNeutralBackground2Selected,
+            // border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
+        // },
     },
     drawer: {
         height: "100vh",
-        backgroundColor: tokens.colorNeutralBackground2, 
+        width: "210px"
     },
     drawerHeader: {
         padding: "8px 24px 8px 24px"
     },
     drawerBody: {
-        padding: "0px 0px 25px 0px"
+        padding: "0px 0px 25px 0px",
     },
 });
 
 const LandScapeHomeScreen: FC = () => {
     const styles = useStyles();
-
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    
     
     // const restoreFocusTargetAttributes = useRestoreFocusTarget();
     const restoreFocusSourceAttributes = useRestoreFocusSource();
@@ -56,7 +62,7 @@ const LandScapeHomeScreen: FC = () => {
                 separator={true}
                 open={isOpen}
                 onOpenChange={(_, { open }) => setIsOpen(open)}
-                className={styles.drawer}
+                className={styles.drawer}                
             >
                 <DrawerHeader className={styles.drawerHeader}>
                     <DrawerHeaderTitle
@@ -77,7 +83,7 @@ const LandScapeHomeScreen: FC = () => {
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
-                <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
+                <AppBar title={toUpperCaseFirstLetter(location.pathname.split("/")[2])} isOpen={isOpen} openDrawer={openDrawer}/>
                 <div className={styles.detailContent}>
                     <PaneNavigator mini={true} show={!isOpen}/>
                     <div className={isOpen == true? 'hideMiniPanelnav':'showMiniPanelnav'}>
@@ -88,5 +94,13 @@ const LandScapeHomeScreen: FC = () => {
         </div>        
     );
 };
+
+function toUpperCaseFirstLetter(title: string) {
+    let firstLetter = title.charAt(0);
+    let firstLetterCap = firstLetter.toUpperCase();
+    let remainingLetters = title.slice(1);
+    let capitalizedWord = firstLetterCap + remainingLetters
+    return capitalizedWord;
+}
 
 export default LandScapeHomeScreen;

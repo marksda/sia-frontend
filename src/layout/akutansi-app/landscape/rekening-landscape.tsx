@@ -5,6 +5,7 @@ import { FC } from "react";
 const useStyles = makeStyles({
     root: {
         display: "flex",
+        margin: "8px"
     },
 });
 
