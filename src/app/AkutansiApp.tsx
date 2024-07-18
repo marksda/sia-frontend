@@ -4,7 +4,7 @@ import { useAppSelector } from "../features/state-engine/redux-hooks";
 const AkutansiApp = () => {
     const token = useAppSelector(state => state.persisted.token); 
 
-    return token == null ? <Navigate to="/login" replace={true} /> : <Navigate to="/home/pembukuan" replace={true} />
+    return token == null ? <Navigate to="/login" replace={true} /> : <Navigate to="/home/pembukuan/kode_rekening" replace={true} />
 };
 
 export default AkutansiApp;

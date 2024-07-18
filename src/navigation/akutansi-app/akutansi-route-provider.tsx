@@ -4,6 +4,7 @@ import HomeScreen from "../../scenes/akutansi-app/home-page.component";
 import SignInScreen from "../../scenes/akutansi-app/sign-in.component";
 import { FC } from "react";
 import RekeningScreen from "../../scenes/akutansi-app/rekening-page.component";
+import RekeningKodeScreen from "../../scenes/akutansi-app/rekening-kode-page.component";
 
 
 interface IAkutansiRouteProvider {
@@ -14,7 +15,7 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (<AkutansiApp />)
+      element: (<AkutansiApp />),
     },
     {
       path: `/${mainPath}`,
@@ -22,22 +23,28 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
       children: [
         {
           path: "pembukuan",
-          element: (<RekeningScreen />)
+          element: (<RekeningScreen />),
+          children: [
+            {
+              path: "kode_rekening",
+              element: (<RekeningKodeScreen />),
+            },
+          ],
         },
         {
           path: "laporan",
-          element: (<div style={{color: 'black'}}>Tes laporan</div>)
+          element: (<div style={{color: 'black'}}>Tes laporan</div>),
         },
         {
           path: "pengaturan",
-          element: (<div style={{color: 'black'}}>Tes pengaturan</div>)
+          element: (<div style={{color: 'black'}}>Tes pengaturan</div>),
         }
       ]
     },
     {
       path: "/login",
-      element: (<SignInScreen />)
-    }
+      element: (<SignInScreen />),
+    },
   ]);
   
   return <RouterProvider router={router} />;         

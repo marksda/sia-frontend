@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     },
 });
 
-const LandScapeHomeScreen: FC = () => {
+const HomeLandScapeLayout: FC = () => {
     const styles = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
@@ -103,4 +103,4 @@ function toUpperCaseFirstLetter(title: string) {
     return capitalizedWord;
 }
 
-export default LandScapeHomeScreen;
+export default HomeLandScapeLayout;

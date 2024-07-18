@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     },
 });
 
-const RekeningPortraitLayout: FC = () => {
+const RekeningKodePortraitLayout: FC = () => {
     const styles = useStyles();
 
     return (
@@ -16,4 +16,4 @@ const RekeningPortraitLayout: FC = () => {
     );
 };
 
-export default RekeningPortraitLayout;
+export default RekeningKodePortraitLayout;

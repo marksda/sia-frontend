@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
 });
 
-const PortraitHomeScreen = () => {
+const HomePortraitLayout = () => {
     const styles = useStyles();
 
     const [isOpen, setIsOpen] = useState(false);
@@ -67,10 +67,10 @@ const PortraitHomeScreen = () => {
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
-                <AppBar isOpen={isOpen} openDrawer={openDrawer}/>
+                <AppBar title="portrait" isOpen={isOpen} openDrawer={openDrawer}/>
             </div>
         </div>        
     );
 };
 
-export default PortraitHomeScreen;
+export default HomePortraitLayout;

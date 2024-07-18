@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
 });
 
-const RekeningLandScapeLayout: FC = () => {
+const RekeningKodeLandScapeLayout: FC = () => {
     const styles = useStyles();
 
     return (
@@ -39,4 +39,4 @@ const RekeningLandScapeLayout: FC = () => {
     );
 };
 
-export default RekeningLandScapeLayout;
+export default RekeningKodeLandScapeLayout;
