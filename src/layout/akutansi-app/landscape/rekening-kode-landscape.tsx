@@ -1,4 +1,4 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import { makeStyles, Tab, TabList } from "@fluentui/react-components";
 import { FC } from "react";
 
 
@@ -6,17 +6,14 @@ const useStyles = makeStyles({
     root: {
         display: "grid",
         gridTemplateColumns: "auto",
-        gridTemplateRows: "40px auto",
-        marginLeft: "1px",
+        gridTemplateRows: "32px auto",
         padding: "16px",
-        background: tokens.colorNeutralBackground1,
     },
     header: {
         display: "flex",
-        background: tokens.colorNeutralBackground1,
         boxShadow: "rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset",
-        // width: "95%",
-        // justifySelf: "center"
+        // width: "100%",
+        // justifySelf: "center",
     }
 });
 
@@ -25,8 +22,19 @@ const RekeningKodeLandScapeLayout: FC = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.header}>tes</div>
-            <div></div>
+            <div className={styles.header}>
+            <TabList defaultSelectedValue="semua" style={{flex: 1}} appearance="transparent">
+                <Tab value="semua">Semua</Tab>
+                <Tab value="aktiva">Aktiva</Tab>
+                <Tab value="kewajiban">Kewajiban</Tab>
+                <Tab value="modal">Modal</Tab>
+                <Tab value="pendapatan">Pendapatan</Tab>
+                <Tab value="hpp">Harga Pokok Penjualan</Tab>
+                <Tab value="beban">Beban</Tab>
+                <Tab value="pendapatan_lain">Pendapatan lain-lain</Tab>
+                <Tab value="beban_lain">Beban lain-lain</Tab>
+            </TabList>
+            </div>
         </div>
     );
 };

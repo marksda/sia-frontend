@@ -24,13 +24,12 @@ const useStyles = makeStyles({
         height: "calc(100vh - 40px)",
         '& .hideMiniPanelnav': {
             gridArea: "main",
-            background: tokens.colorNeutralBackground2,
-
+            background: tokens.colorNeutralBackground1,
         },
         '& .showMiniPanelnav': {
             margin: "4px 0px 4px 4px",
             border: `1px solid ${tokens.colorNeutralBackground3Selected}`,
-            borderRadius: tokens.borderRadiusLarge,
+            borderRadius: tokens.borderRadiusXLarge,
             background: tokens.colorNeutralBackground1,
         },
     },
