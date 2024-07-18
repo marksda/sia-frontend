@@ -79,7 +79,7 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
         <nav>
             <ul className={styles.containerMenu}>
                 <li>
-                    <NavLink to="/home/pembukuan">                            
+                    <NavLink to="/home/pembukuan/kode_rekening">                            
                         <BookRegular className={styles.icon24}/>    
                         <span>Pembukuan</span>                        
                     </NavLink>
@@ -109,7 +109,7 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
                         withArrow
                         positioning="after"
                     >
-                        <NavLink to="/home/pembukuan">                            
+                        <NavLink to="/home/pembukuan/kode_rekening">                            
                             <BookRegular className={styles.icon24}/>                            
                         </NavLink>
                     

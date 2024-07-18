@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        padding: "16px",
+        padding: "16px",        
         // rowGap: "20px",
         background: tokens.colorNeutralBackground1,
         height: "calc(100vh - 74px)",

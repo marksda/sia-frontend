@@ -1,24 +1,23 @@
-import { makeStyles, Tab, TabList, tokens } from "@fluentui/react-components";
+import { makeStyles, tokens } from "@fluentui/react-components";
 import { FC } from "react";
-import { Outlet } from "react-router-dom";
 
 
 const useStyles = makeStyles({
     root: {
         display: "grid",
-        gridTemplateColumns: "200px auto",
-        gridTemplateRows: "auto",
-    },
-    menu: {
-        alignItems: "flex-start",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
+        gridTemplateColumns: "auto",
+        gridTemplateRows: "40px auto",
+        marginLeft: "1px",
         padding: "16px",
-        // rowGap: "20px",
         background: tokens.colorNeutralBackground1,
-        height: "calc(100vh - 74px)",
     },
+    header: {
+        display: "flex",
+        background: tokens.colorNeutralBackground1,
+        boxShadow: "rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset",
+        // width: "95%",
+        // justifySelf: "center"
+    }
 });
 
 const RekeningKodeLandScapeLayout: FC = () => {
@@ -26,15 +25,8 @@ const RekeningKodeLandScapeLayout: FC = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.menu}>
-                <TabList defaultSelectedValue="kode" vertical>
-                    <Tab value="kode">Kode akun</Tab>
-                    <Tab value="jurnal">Jurnal</Tab>
-                    <Tab value="buku_pembantu">Buku Pembantu</Tab>
-                    <Tab value="buku_besar">Buku Besar</Tab>
-                </TabList>
-            </div>
-            <Outlet />
+            <div className={styles.header}>tes</div>
+            <div></div>
         </div>
     );
 };
