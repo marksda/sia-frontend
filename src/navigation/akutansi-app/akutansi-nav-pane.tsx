@@ -31,8 +31,9 @@ const useStyles = makeStyles({
         }
     },
     containerMiniMenu: {
-        height: "calc(100vh - 40px)",
-        borderRight: `1px solid ${tokens.colorNeutralBackground3Selected}`,
+        // height: "calc(100vh - 48px)",
+        // border: "1px solid red",
+        // borderRight: `1px solid ${tokens.colorNeutralBackground3Selected}`,
         listStyleType: "none",
         margin: "0px",
         padding: "0px",

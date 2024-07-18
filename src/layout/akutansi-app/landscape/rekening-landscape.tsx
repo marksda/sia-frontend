@@ -15,9 +15,9 @@ const useStyles = makeStyles({
         flexDirection: "column",
         justifyContent: "flex-start",
         padding: "16px",        
-        // rowGap: "20px",
-        background: tokens.colorNeutralBackground1,
-        height: "calc(100vh - 74px)",
+        borderRight: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
+        // background: tokens.colorNeutralBackground1,
+        // height: "calc(100vh - 90px)",
     },
 });
 

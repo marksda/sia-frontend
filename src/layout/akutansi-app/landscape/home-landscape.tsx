@@ -8,6 +8,7 @@ import { Outlet, useLocation } from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         display: "flex",
+        backgroundColor: tokens.colorNeutralBackground2Selected,
     },
     content: {
         flex: "1",    
@@ -20,13 +21,17 @@ const useStyles = makeStyles({
         gridTemplateColumns: "55px auto",
         gridTemplateRows: "auto",
         gridTemplateAreas: `"main main"`,
+        height: "calc(100vh - 40px)",
         '& .hideMiniPanelnav': {
             gridArea: "main",
             background: tokens.colorNeutralBackground2,
+
         },
         '& .showMiniPanelnav': {
-            background: tokens.colorNeutralBackground2Selected,
-            border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
+            margin: "4px 0px 4px 4px",
+            border: `1px solid ${tokens.colorNeutralBackground3Selected}`,
+            borderRadius: tokens.borderRadiusLarge,
+            background: tokens.colorNeutralBackground1,
         },
     },
     drawer: {
