@@ -134,13 +134,10 @@ const useStyles = makeStyles({
         padding: "16px",
     },
     header: {
-        // display: "flex",
         overflow: "hidden",
         zIndex: 0,
         boxShadow: "rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset",
         height: "fit-content",
-        // width: "100%",
-        // justifySelf: "center",
     }
 });
 
@@ -184,15 +181,3 @@ const RekeningKodeLandScapeLayout: FC = () => {
 };
 
 export default RekeningKodeLandScapeLayout;
-
-{/* <TabList defaultSelectedValue="semua" style={{flex: 1}} appearance="transparent">
-    <Tab value="semua">Semua</Tab>
-    <Tab value="aktiva">Aktiva</Tab>
-    <Tab value="kewajiban">Kewajiban</Tab>
-    <Tab value="modal">Modal</Tab>
-    <Tab value="pendapatan">Pendapatan</Tab>
-    <Tab value="hpp">Harga Pokok Penjualan</Tab>
-    <Tab value="beban">Beban</Tab>
-    <Tab value="pendapatan_lain">Pendapatan lain-lain</Tab>
-    <Tab value="beban_lain">Beban lain-lain</Tab>
-</TabList> */}
