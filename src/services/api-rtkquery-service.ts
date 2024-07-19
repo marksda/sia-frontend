@@ -7,6 +7,7 @@ import { resetToken, setToken } from "./redux-token-slice.service";
 import { IBarang } from "../features/entities/barang";
 import { IQueryParamFilters } from "../features/entities/query-param-filters";
 import { ITransaksi } from "../features/entities/transaksi";
+import { IAkun } from "../features/entities/akutansi-app/akun";
 
 const urlApiSia: string = 'https://dlhk.ddns.net/api';
 
@@ -100,7 +101,7 @@ export const baseQueryWithReauth: BaseQueryFn<string|FetchArgs, unknown, FetchBa
 export const siaApi = createApi({
     reducerPath: 'siaApi',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Barang','Kosong', 'Transaksi'],
+    tagTypes: ['Akun', 'Barang','Kosong', 'Transaksi'],
     endpoints: builder => {
         return {
             saveBarang: builder.mutation<IBarang, Partial<IBarang>>({
@@ -126,8 +127,42 @@ export const siaApi = createApi({
                 }),
                 invalidatesTags: (result) => result ? ['Transaksi']:['Kosong']
             }),
+            //akun
+            saveAkun: builder.mutation<IAkun, Partial<IAkun>>({
+                query: (body) => ({
+                    url: '/akun',
+                    method: 'POST',
+                    body,
+                }),
+                invalidatesTags: (result) => result ? ['Akun']:['Kosong']
+            }),
+            getDaftarAkun: builder.query<IAkun[], IQueryParamFilters>({
+                query: (_queryParams) => ({
+                    url: `/akun/list`,
+                    method: 'GET',
+                }),
+                providesTags: ['Akun']
+            }),
+            updateAkun: builder.mutation<IAkun, {idLama: string; idPerusahaanLama: String; akunBaru: Partial<IAkun>;}>({
+                query: ({idLama, idPerusahaanLama, akunBaru}) => ({
+                    url: `/akun/${idLama}}/${idPerusahaanLama}`,
+                    method: 'PUT',
+                    body: akunBaru,
+                }),
+                invalidatesTags: (result) => result? ['Akun']:['Kosong']
+            }),
+            deleteAkun: builder.mutation<Partial<IAkun>, {idAkun: string; idPerusahaan: String;}>({
+                query: ({idAkun, idPerusahaan}) => ({                  
+                    url: `/akun/${idAkun}/${idPerusahaan}`,
+                    method: 'DELETE',            
+                }),
+                invalidatesTags: (result) => result? ['Akun']:['Kosong']
+            }),
         }
     }
 });
 
-export const {useSaveBarangMutation, useGetDaftarBarangQuery, useSaveTransaksiMutation} = siaApi;
+export const {
+    useSaveAkunMutation, useGetDaftarAkunQuery, useUpdateAkunMutation, useDeleteAkunMutation,
+    useSaveBarangMutation, useGetDaftarBarangQuery, useSaveTransaksiMutation
+} = siaApi;
