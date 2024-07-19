@@ -1,6 +1,7 @@
-import { Button, makeStyles, Menu, MenuItem, MenuItemProps, MenuList, MenuPopover, MenuTrigger, Overflow, OverflowItem, Tab, TabList, tokens, useIsOverflowItemVisible, useOverflowMenu } from "@fluentui/react-components";
+import { Button, createTableColumn, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, makeStyles, Menu, MenuItem, MenuItemProps, MenuList, MenuPopover, MenuTrigger, Overflow, OverflowItem, Tab, TableCellLayout, TableColumnDefinition, TabList, tokens, useIsOverflowItemVisible, useOverflowMenu } from "@fluentui/react-components";
 import { MoreHorizontal16Regular } from "@fluentui/react-icons";
 import { FC, useState } from "react";
+import { IAkun } from "../../../features/entities/akutansi-app/akun";
 
 //----data tab-----//
 type KelompokAkunTab = {
@@ -190,33 +191,107 @@ const RekeningKodeLandScapeLayout: FC = () => {
     );
 };
 
+/*
+* panel untuk semua akun
+*/
+const items: IAkun[] = [
+  {
+    id: "123",
+    perusahaan: { id: "123", nama: "cso" },
+    header: true,
+    level: 1,
+    nama: "Aktiva",
+    kode: "1-0000",
+    kelompok_akun: {id: "1", nama: "AKTIVA"}
+  },
+];
+
+const columns: TableColumnDefinition<IAkun>[] = [
+  createTableColumn<IAkun>({
+    columnId: "id",
+    compare: (a, b) => {
+      return a.id!.localeCompare(b.id!);
+    },
+    renderHeaderCell: () => {
+      return "Id";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout>
+          {item.id}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<IAkun>({
+    columnId: "perusahaan",
+    compare: (a, b) => {
+      return a.perusahaan!.nama!.localeCompare(b.perusahaan!.nama!);
+    },
+    renderHeaderCell: () => {
+      return "Perusahaan";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout>
+          {item.perusahaan?.nama}
+        </TableCellLayout>
+      );
+    },
+    createTableColumn<IAkun>({
+      columnId: "perusahaan",
+      compare: (a, b) => {
+        return a.perusahaan!.nama!.localeCompare(b.perusahaan!.nama!);
+      },
+      renderHeaderCell: () => {
+        return "Perusahaan";
+      },
+      renderCell: (item) => {
+        return (
+          <TableCellLayout>
+            {item.perusahaan?.nama}
+          </TableCellLayout>
+        );
+      },
+  }),
+]
+
 const Semua = () => (
-  <div role="tabpanel" aria-labelledby="Arrivals">
-    <table>
-      <thead>
-        <th>Origin</th>
-        <th>Gate</th>
-        <th>ETA</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>DEN</td>
-          <td>C3</td>
-          <td>12:40 PM</td>
-        </tr>
-        <tr>
-          <td>SMF</td>
-          <td>D1</td>
-          <td>1:18 PM</td>
-        </tr>
-        <tr>
-          <td>SFO</td>
-          <td>E18</td>
-          <td>1:42 PM</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <DataGrid
+    items={items}
+    columns={columns}
+    sortable
+    selectionMode="multiselect"
+    getRowId={(item) => item.id}
+    focusMode="composite"
+    style={{ minWidth: "550px" }}
+  >
+    <DataGridHeader>
+      <DataGridRow
+        selectionCell={{
+          checkboxIndicator: { "aria-label": "Select all rows" },
+        }}
+      >
+        {({ renderHeaderCell }) => (
+          <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+        )}
+      </DataGridRow>
+    </DataGridHeader>
+    <DataGridBody<IAkun>>
+      {({ item, rowId }) => (
+        <DataGridRow<IAkun>
+          key={rowId}
+          selectionCell={{
+            checkboxIndicator: { "aria-label": "Select row" },
+          }}
+        >
+          {({ renderCell }) => (
+            <DataGridCell>{renderCell(item)}</DataGridCell>
+          )}
+        </DataGridRow>
+      )}
+    </DataGridBody>
+  </DataGrid>
 );
 
 
