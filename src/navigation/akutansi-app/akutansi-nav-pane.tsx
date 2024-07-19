@@ -51,7 +51,7 @@ const useStyles = makeStyles({
                 borderLeft: "4px solid #0f6cbd"
             },
             '&:not(.active)': {
-                borderLeft: "4px solid rgba(255,255,255,.5)"
+                borderLeft: "4px solid transparent"
             },
             '&:hover:not(.active)': {
                 backgroundColor: tokens.colorNeutralBackground2Hover,  // "rgb(200 200 201)",

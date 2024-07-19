@@ -28,9 +28,10 @@ const useStyles = makeStyles({
         },
         '& .showMiniPanelnav': {
             margin: "4px 0px 4px 4px",
-            border: `1px solid ${tokens.colorNeutralBackground3Selected}`,
-            borderRadius: tokens.borderRadiusXLarge,
+            // border: `1px solid ${tokens.colorNeutralBackground3Selected}`,
             background: tokens.colorNeutralBackground1,
+            borderRadius: tokens.borderRadiusXLarge,
+            boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
         },
     },
     drawer: {

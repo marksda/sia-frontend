@@ -7,7 +7,6 @@ const useStyles = makeStyles({
     root: {
         display: "grid",
         gridTemplateColumns: "200px auto",
-        // gridTemplateRows: "auto",
         height: "100%",
     },
     menu: {

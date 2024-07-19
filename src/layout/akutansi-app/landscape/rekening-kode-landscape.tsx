@@ -131,13 +131,20 @@ const useStyles = makeStyles({
         display: "grid",
         gridTemplateColumns: "auto",
         gridTemplateRows: "32px auto",
-        padding: "16px",
+        padding: "8px 16px",
     },
     header: {
         overflow: "hidden",
         zIndex: 0,
         boxShadow: "rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset",
         height: "fit-content",
+    },
+    panels: {
+      marginTop: "20px",
+      padding: "0 10px",
+      // background: tokens.colorNeutralBackground1,
+      // border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
+      // boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
     }
 });
 
@@ -146,7 +153,7 @@ const RekeningKodeLandScapeLayout: FC = () => {
     const [selectedTabId, setSelectedTabId] = useState<string>("semua");
 
     const onTabSelect = (tabId: string) => {
-        setSelectedTabId(tabId);
+      setSelectedTabId(tabId);
     };
 
     return (
@@ -176,8 +183,41 @@ const RekeningKodeLandScapeLayout: FC = () => {
                     </TabList>
                 </Overflow>            
             </div>
+            <div className={styles.panels}>
+              {selectedTabId === "semua" && <Semua />}
+            </div>            
         </div>
     );
 };
+
+const Semua = () => (
+  <div role="tabpanel" aria-labelledby="Arrivals">
+    <table>
+      <thead>
+        <th>Origin</th>
+        <th>Gate</th>
+        <th>ETA</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DEN</td>
+          <td>C3</td>
+          <td>12:40 PM</td>
+        </tr>
+        <tr>
+          <td>SMF</td>
+          <td>D1</td>
+          <td>1:18 PM</td>
+        </tr>
+        <tr>
+          <td>SFO</td>
+          <td>E18</td>
+          <td>1:42 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+);
+
 
 export default RekeningKodeLandScapeLayout;
