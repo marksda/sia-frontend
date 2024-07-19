@@ -131,7 +131,7 @@ const useStyles = makeStyles({
     root: {
         display: "grid",
         gridTemplateColumns: "auto",
-        gridTemplateRows: "32px auto",
+        gridTemplateRows: "64px auto",
         padding: "8px 16px",
     },
     header: {
@@ -141,7 +141,7 @@ const useStyles = makeStyles({
         height: "fit-content",
     },
     panels: {
-      marginTop: "20px",
+      // marginTop: "20px",
       // padding: "0 10px",
       // background: tokens.colorNeutralBackground1,
       // border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
