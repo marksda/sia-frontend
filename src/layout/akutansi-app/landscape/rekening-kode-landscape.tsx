@@ -142,7 +142,7 @@ const useStyles = makeStyles({
     },
     panels: {
       marginTop: "20px",
-      padding: "0 10px",
+      // padding: "0 10px",
       // background: tokens.colorNeutralBackground1,
       // border: `1px solid  ${tokens.colorNeutralBackground3Selected}`,
       // boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
@@ -204,55 +204,106 @@ const items: IAkun[] = [
     kode: "1-0000",
     kelompok_akun: {id: "1", nama: "AKTIVA"}
   },
+  {
+    id: "125",
+    perusahaan: { id: "123", nama: "cso" },
+    header: true,
+    level: 2,
+    nama: "Aktiva lancar",
+    kode: "1-1000",
+    kelompok_akun: {id: "1", nama: "AKTIVA"}
+  },
+  {
+    id: "126",
+    perusahaan: { id: "123", nama: "cso" },
+    header: false,
+    level: 3,
+    nama: "Kas",
+    kode: "1-1001",
+    kelompok_akun: {id: "1", nama: "AKTIVA"}
+  },
 ];
 
 const columns: TableColumnDefinition<IAkun>[] = [
   createTableColumn<IAkun>({
-    columnId: "id",
+    columnId: "kode",
     compare: (a, b) => {
-      return a.id!.localeCompare(b.id!);
+      return a.kode!.localeCompare(b.kode!);
     },
     renderHeaderCell: () => {
-      return "Id";
+      return "Kode";
     },
     renderCell: (item) => {
       return (
         <TableCellLayout>
-          {item.id}
+          {item.kode}
         </TableCellLayout>
       );
     },
   }),
   createTableColumn<IAkun>({
-    columnId: "perusahaan",
+    columnId: "nama",
     compare: (a, b) => {
-      return a.perusahaan!.nama!.localeCompare(b.perusahaan!.nama!);
+      return a.nama!.localeCompare(b.nama!);
     },
     renderHeaderCell: () => {
-      return "Perusahaan";
+      return "Nama";
     },
     renderCell: (item) => {
       return (
         <TableCellLayout>
-          {item.perusahaan?.nama}
+          {item.nama}
         </TableCellLayout>
       );
+    }    
+  }),  
+  createTableColumn<IAkun>({
+    columnId: "level",
+    compare: (a, b) => {
+      return a.level! - b.level!;
     },
-    createTableColumn<IAkun>({
-      columnId: "perusahaan",
-      compare: (a, b) => {
-        return a.perusahaan!.nama!.localeCompare(b.perusahaan!.nama!);
-      },
-      renderHeaderCell: () => {
-        return "Perusahaan";
-      },
-      renderCell: (item) => {
-        return (
-          <TableCellLayout>
-            {item.perusahaan?.nama}
-          </TableCellLayout>
-        );
-      },
+    renderHeaderCell: () => {
+      return "Level";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout>
+          {item.level}
+        </TableCellLayout>
+      );
+    }    
+  }),
+  createTableColumn<IAkun>({
+    columnId: "header",
+    compare: (a, b) => {
+      return (a.header === b.header)? 0 : a.header? -1 : 1;
+    },
+    renderHeaderCell: () => {
+      return "Header";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout>
+          {`${item.header}`}
+        </TableCellLayout>
+      );
+    }    
+  }),
+  createTableColumn<IAkun>({
+    columnId: "kelompok",
+    compare: (a, b) => {
+      return a.kelompok_akun!.nama!.localeCompare(b.kelompok_akun!.nama!);
+    },
+    renderHeaderCell: () => {
+      return "Kelompok";
+    },
+    renderCell: (item) => {
+      return (
+        <TableCellLayout>
+          {item.kelompok_akun?.nama}
+        </TableCellLayout>
+      );
+    }    
   }),
 ]
 
@@ -260,7 +311,7 @@ const Semua = () => (
   <DataGrid
     items={items}
     columns={columns}
-    sortable
+    sortable={false}
     selectionMode="multiselect"
     getRowId={(item) => item.id}
     focusMode="composite"

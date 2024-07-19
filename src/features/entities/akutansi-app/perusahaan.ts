@@ -1,7 +1,7 @@
-import { IDesa } from "./desa";
-import { IKabupaten } from "./kabupaten";
-import { IKecamatan } from "./kecamatan";
-import { IPropinsi } from "./propinsi";
+import { IDesa } from "../desa";
+import { IKabupaten } from "../kabupaten";
+import { IKecamatan } from "../kecamatan";
+import { IPropinsi } from "../propinsi";
 
 export interface IPerusahaan {
     id: string|null;
