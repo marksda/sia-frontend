@@ -168,7 +168,7 @@ const RekeningKodeLandScapeLayout: FC = () => {
         },
       ],
     });
-    const { data: tabs, isLoading } = useGetDaftarKelompokAkunQuery(queryParams);
+    const { data: tabs } = useGetDaftarKelompokAkunQuery(queryParams);
 
     const onTabSelect = (tabId: string) => {
       setSelectedTabId(tabId);
@@ -203,7 +203,7 @@ const RekeningKodeLandScapeLayout: FC = () => {
                 </Overflow>            
             </div>
           }
-          {isLoading == false && 
+          {tabs != undefined && 
             <div className={styles.panels}>
               <DataGridKodeRekening 
                 tab={selectedTabId} 
