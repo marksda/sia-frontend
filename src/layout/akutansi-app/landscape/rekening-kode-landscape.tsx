@@ -185,7 +185,22 @@ const RekeningKodeLandScapeLayout: FC = () => {
                 </Overflow>            
             </div>
             <div className={styles.panels}>
-              <DataGridKodeRekening tab={selectedTabId} />
+              <DataGridKodeRekening 
+                tab={selectedTabId} 
+                initSelectedFilters={
+                  {
+                      pageNumber: 1,
+                      pageSize: 25,
+                      filters: [],
+                      sortOrders: [
+                        {
+                          fieldName: 'kode',
+                          value: 'ASC'
+                        },
+                      ],
+                  }
+              }
+              />
             </div>            
         </div>
     );

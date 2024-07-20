@@ -1,43 +1,46 @@
 import { createTableColumn, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, TableCellLayout, TableColumnDefinition } from "@fluentui/react-components";
 import { IAkun } from "../../features/entities/akutansi-app/akun";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { useGetDaftarAkunQuery } from "../../services/api-rtkquery-service";
+import { IQueryParamFilters } from "../../features/entities/query-param-filters";
 
 
 interface IDataGridKodeRekeningProps {
     tab: string;
+    initSelectedFilters: IQueryParamFilters;
 };
 /*
 * panel untuk semua akun
 */
-const items: IAkun[] = [
-{
-    id: "123",
-    perusahaan: { id: "123", nama: "cso" },
-    header: true,
-    level: 1,
-    nama: "Aktiva",
-    kode: "1-0000",
-    kelompok_akun: {id: "1", nama: "AKTIVA"}
-},
-{
-    id: "125",
-    perusahaan: { id: "123", nama: "cso" },
-    header: true,
-    level: 2,
-    nama: "Aktiva lancar",
-    kode: "1-1000",
-    kelompok_akun: {id: "1", nama: "AKTIVA"}
-},
-{
-    id: "126",
-    perusahaan: { id: "123", nama: "cso" },
-    header: false,
-    level: 3,
-    nama: "Kas",
-    kode: "1-1001",
-    kelompok_akun: {id: "1", nama: "AKTIVA"}
-},
-];
+// const items: IAkun[] = [
+// {
+//     id: "123",
+//     perusahaan: { id: "123", nama: "cso" },
+//     header: true,
+//     level: 1,
+//     nama: "Aktiva",
+//     kode: "1-0000",
+//     kelompok_akun: {id: "1", nama: "AKTIVA"}
+// },
+// {
+//     id: "125",
+//     perusahaan: { id: "123", nama: "cso" },
+//     header: true,
+//     level: 2,
+//     nama: "Aktiva lancar",
+//     kode: "1-1000",
+//     kelompok_akun: {id: "1", nama: "AKTIVA"}
+// },
+// {
+//     id: "126",
+//     perusahaan: { id: "123", nama: "cso" },
+//     header: false,
+//     level: 3,
+//     nama: "Kas",
+//     kode: "1-1001",
+//     kelompok_akun: {id: "1", nama: "AKTIVA"}
+// },
+// ];
   
 const columns: TableColumnDefinition<IAkun>[] = [
     createTableColumn<IAkun>({
@@ -122,11 +125,17 @@ const columns: TableColumnDefinition<IAkun>[] = [
     }),
 ]
   
-const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab}) => {
+const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelectedFilters}) => {
+    const [currentPage] = useState<number>(initSelectedFilters.pageNumber!);
+    const [pageSize] = useState<number>(initSelectedFilters.pageSize!);
+    const [queryParams] = useState<IQueryParamFilters>({
+        ...initSelectedFilters, pageNumber: currentPage, pageSize
+    });
+    const { data: items, isLoading } = useGetDaftarAkunQuery(queryParams);
     return (<>
     { tab == "semua" ?
         <DataGrid
-            items={items}
+            items={isLoading == true ? [] : items!}
             columns={columns}
             sortable={false}
             selectionMode="multiselect"
