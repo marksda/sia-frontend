@@ -6,7 +6,7 @@ import {
 import { FC } from "react";
 
 interface IAppBarFluentUIProps {
-    title: string,
+    title: string;
     isOpen: boolean;
     openDrawer: () => void;
 };
