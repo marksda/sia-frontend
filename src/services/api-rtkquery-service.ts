@@ -8,6 +8,7 @@ import { IBarang } from "../features/entities/barang";
 import { IQueryParamFilters } from "../features/entities/query-param-filters";
 import { ITransaksi } from "../features/entities/transaksi";
 import { IAkun } from "../features/entities/akutansi-app/akun";
+import { IKelompokAkun } from "../features/entities/akutansi-app/kelompok-akun";
 
 const urlApiSia: string = 'https://dlhk.ddns.net/api';
 
@@ -101,7 +102,7 @@ export const baseQueryWithReauth: BaseQueryFn<string|FetchArgs, unknown, FetchBa
 export const siaApi = createApi({
     reducerPath: 'siaApi',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Akun', 'Barang','Kosong', 'Transaksi'],
+    tagTypes: ['Akun', 'Barang', 'KelompokAkun', 'Kosong', 'Transaksi'],
     endpoints: builder => {
         return {
             saveBarang: builder.mutation<IBarang, Partial<IBarang>>({
@@ -126,6 +127,37 @@ export const siaApi = createApi({
                     body,
                 }),
                 invalidatesTags: (result) => result ? ['Transaksi']:['Kosong']
+            }),
+            //Kelompok akun
+            saveKelompokAkun: builder.mutation<IKelompokAkun, Partial<IKelompokAkun>>({
+                query: (body) => ({
+                    url: '/kelompok_akun',
+                    method: 'POST',
+                    body,
+                }),
+                invalidatesTags: (result) => result ? ['KelompokAkun']:['Kosong']
+            }),
+            getDaftarKelompokAkun: builder.query<IKelompokAkun[], IQueryParamFilters>({
+                query: (_queryParams) => ({
+                    url: `/kelompok_akun/list`,
+                    method: 'GET',
+                }),
+                providesTags: ['KelompokAkun']
+            }),
+            updateKelompokAkun: builder.mutation<IKelompokAkun, {idLama: string; idPerusahaanLama: String; kelompokAkunBaru: Partial<IKelompokAkun>;}>({
+                query: ({idLama, idPerusahaanLama, kelompokAkunBaru}) => ({
+                    url: `/kelompok_akun/${idLama}}/${idPerusahaanLama}`,
+                    method: 'PUT',
+                    body: kelompokAkunBaru,
+                }),
+                invalidatesTags: (result) => result? ['KelompokAkun']:['Kosong']
+            }),
+            deleteKelompokAkun: builder.mutation<Partial<IKelompokAkun>, {idKelompokAkun: string; idPerusahaan: String;}>({
+                query: ({idKelompokAkun, idPerusahaan}) => ({                  
+                    url: `/kelompok_akun/${idKelompokAkun}/${idPerusahaan}`,
+                    method: 'DELETE',            
+                }),
+                invalidatesTags: (result) => result? ['KelompokAkun']:['Kosong']
             }),
             //akun
             saveAkun: builder.mutation<IAkun, Partial<IAkun>>({
@@ -163,6 +195,7 @@ export const siaApi = createApi({
 });
 
 export const {
+    useSaveKelompokAkunMutation, useGetDaftarKelompokAkunQuery, useUpdateKelompokAkunMutation, useDeleteKelompokAkunMutation,
     useSaveAkunMutation, useGetDaftarAkunQuery, useUpdateAkunMutation, useDeleteAkunMutation,
     useSaveBarangMutation, useGetDaftarBarangQuery, useSaveTransaksiMutation
 } = siaApi;

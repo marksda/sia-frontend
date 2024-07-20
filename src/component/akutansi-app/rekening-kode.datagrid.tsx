@@ -9,38 +9,6 @@ interface IDataGridKodeRekeningProps {
     tab: string;
     initSelectedFilters: IQueryParamFilters;
 };
-/*
-* panel untuk semua akun
-*/
-// const items: IAkun[] = [
-// {
-//     id: "123",
-//     perusahaan: { id: "123", nama: "cso" },
-//     header: true,
-//     level: 1,
-//     nama: "Aktiva",
-//     kode: "1-0000",
-//     kelompok_akun: {id: "1", nama: "AKTIVA"}
-// },
-// {
-//     id: "125",
-//     perusahaan: { id: "123", nama: "cso" },
-//     header: true,
-//     level: 2,
-//     nama: "Aktiva lancar",
-//     kode: "1-1000",
-//     kelompok_akun: {id: "1", nama: "AKTIVA"}
-// },
-// {
-//     id: "126",
-//     perusahaan: { id: "123", nama: "cso" },
-//     header: false,
-//     level: 3,
-//     nama: "Kas",
-//     kode: "1-1001",
-//     kelompok_akun: {id: "1", nama: "AKTIVA"}
-// },
-// ];
   
 const columns: TableColumnDefinition<IAkun>[] = [
     createTableColumn<IAkun>({
