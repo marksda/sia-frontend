@@ -156,7 +156,7 @@ const useStyles = makeStyles({
 
 const RekeningKodeLandScapeLayout: FC = () => {
     const styles = useStyles();    
-    const [selectedTabId, setSelectedTabId] = useState<string>("1");
+    const [selectedTabId, setSelectedTabId] = useState<string>("0");
     const [queryParams] = useState<IQueryParamFilters>({
       pageNumber: 1,
       pageSize: 25,
@@ -183,22 +183,31 @@ const RekeningKodeLandScapeLayout: FC = () => {
                         selectedValue={selectedTabId}
                         onTabSelect={(_, d) => onTabSelect(d.value as string)}
                     >
-                        {
-                            tabs.map((tab) => {
-                                return (
-                                    <OverflowItem
-                                        key={tab.id!}
-                                        id={tab.id!}
-                                        priority={tab.id === selectedTabId ? 2 : 1}
-                                    >
-                                        <Tab value={tab.id!}>
-                                            {tab.nama}
-                                        </Tab>
-                                    </OverflowItem>
-                                );
-                            })
-                        }
-                        <OverflowMenu tabs={tabs} onTabSelect={onTabSelect} />
+                      <OverflowItem
+                        key="0"
+                        id="0"
+                        priority={"0" === selectedTabId ? 2 : 1}
+                      >
+                        <Tab value="0">
+                          Semua
+                        </Tab>
+                      </OverflowItem>
+                      {
+                        tabs.map((tab) => {
+                          return (
+                            <OverflowItem
+                              key={tab.id!}
+                              id={tab.id!}
+                              priority={tab.id === selectedTabId ? 2 : 1}
+                            >
+                              <Tab value={tab.id!}>
+                                {tab.nama}
+                              </Tab>
+                            </OverflowItem>
+                          );
+                        })
+                      }
+                      <OverflowMenu tabs={tabs} onTabSelect={onTabSelect} />
                     </TabList>
                 </Overflow>            
             </div>

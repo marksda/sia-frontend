@@ -101,11 +101,11 @@ const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelected
     });
     const { data: items, isLoading } = useGetDaftarAkunQuery(queryParams);
     return (<>
-    { tab == "semua" ?
+    { tab == "0" ?
         <DataGrid
             items={isLoading == true ? [] : items!}
             columns={columns}
-            sortable={false}
+            sortable={true}
             selectionMode="multiselect"
             getRowId={(item) => item.id}
             focusMode="composite"
