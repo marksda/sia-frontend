@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import PaneNavigator from "../../../navigation/akutansi-app/akutansi-nav-pane";
 import { Outlet, useLocation } from "react-router-dom";
+import { toUpperCaseFirstLetter } from "../../../features/utils/parsing-text";
 
 const useStyles = makeStyles({
     root: {
@@ -36,7 +37,8 @@ const useStyles = makeStyles({
     },
     drawer: {
         height: "100vh",
-        width: "210px"
+        minWidth: "180px",
+        maxWidth: "190px",
     },
     drawerHeader: {
         padding: "8px 24px 8px 24px"
@@ -99,13 +101,5 @@ const HomeLandScapeLayout: FC = () => {
         </div>        
     );
 };
-
-function toUpperCaseFirstLetter(title: string) {
-    let firstLetter = title.charAt(0);
-    let firstLetterCap = firstLetter.toUpperCase();
-    let remainingLetters = title.slice(1);
-    let capitalizedWord = firstLetterCap + remainingLetters
-    return capitalizedWord;
-}
 
 export default HomeLandScapeLayout;

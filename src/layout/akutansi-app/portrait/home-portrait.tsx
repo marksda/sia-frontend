@@ -2,21 +2,16 @@ import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import AppBar from "../../../navigation/akutansi-app/akutansi-nav-app-bar";
+import PaneNavigator from "../../../navigation/akutansi-app/akutansi-nav-pane";
+import { Outlet } from "react-router-dom";
+import { toUpperCaseFirstLetter } from "../../../features/utils/parsing-text";
 
 const useStyles = makeStyles({
-    root: {
-        display: "flex",
-        backgroundColor: "#fff",
-        width: "100%",
-    },
     content: {
-        flex: "1",    
         display: "grid",
-        gridTemplateColumns: "100%",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        // gridRowGap: tokens.spacingVerticalXXL,
-        // gridAutoRows: "max-content",
+        gridTemplateRows: "40px auto",        
+        gridTemplateColumns: "auto",
+        height: `${window.innerHeight}px`
     },
     drawer: {
         height: "100vh"
@@ -28,10 +23,7 @@ const useStyles = makeStyles({
 
 const HomePortraitLayout = () => {
     const styles = useStyles();
-
     const [isOpen, setIsOpen] = useState(false);
-    
-    // const restoreFocusTargetAttributes = useRestoreFocusTarget();
     const restoreFocusSourceAttributes = useRestoreFocusSource();
 
     const openDrawer = () => {
@@ -39,7 +31,7 @@ const HomePortraitLayout = () => {
     };
 
     return (
-        <div className={styles.root}>
+        <>
             <Drawer
                 {...restoreFocusSourceAttributes}
                 type="overlay"
@@ -59,17 +51,18 @@ const HomePortraitLayout = () => {
                         />
                         }
                     >
-                        Default Drawer
+                        SIA
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody>
-                    <p>Drawer content</p>
+                    <PaneNavigator mini={false} />
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
-                <AppBar title="portrait" isOpen={isOpen} openDrawer={openDrawer}/>
+                <AppBar title={toUpperCaseFirstLetter(location.pathname.split("/")[2])} isOpen={isOpen} openDrawer={openDrawer}/>                
+                <Outlet />
             </div>
-        </div>        
+        </>        
     );
 };
 
