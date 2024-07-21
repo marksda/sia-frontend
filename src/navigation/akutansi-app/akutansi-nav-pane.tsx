@@ -69,13 +69,13 @@ const useStyles = makeStyles({
 });
 
 interface IPaneNavigatorProp {
-    mini: boolean;
+    sideBar: boolean;
     show?: boolean;
     setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
     mode: string;
 };
 
-const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show, setIsOpen, mode}) => {
+const PaneNavigator: FC<IPaneNavigatorProp> = ({sideBar, show, setIsOpen, mode}) => {
     const styles = useStyles();
 
     const _handleCloseDrawer = () => {
@@ -84,7 +84,7 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show, setIsOpen, mode}) =>
         }        
     }
 
-    return mini == false ?
+    return sideBar == false ?
         <nav>
             <ul className={styles.containerMenu}>
                 <li onClick={_handleCloseDrawer}>
