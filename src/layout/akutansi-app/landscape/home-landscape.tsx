@@ -86,13 +86,13 @@ const HomeLandScapeLayout: FC = () => {
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody className={styles.drawerBody}>
-                    <PaneNavigator mini={false} />
+                    <PaneNavigator mini={false} mode="landscape"/>
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
                 <AppBar title={toUpperCaseFirstLetter(location.pathname.split("/")[2])} isOpen={isOpen} openDrawer={openDrawer}/>
                 <div className={styles.detailContent}>
-                    <PaneNavigator mini={true} show={!isOpen}/>
+                    <PaneNavigator mini={true} show={!isOpen} setIsOpen={setIsOpen} mode="landscape"/>
                     <div className={isOpen == true? 'hideMiniPanelnav':'showMiniPanelnav'}>
                         <Outlet />
                     </div>                    

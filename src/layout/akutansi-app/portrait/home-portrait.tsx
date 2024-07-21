@@ -55,7 +55,7 @@ const HomePortraitLayout = () => {
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody>
-                    <PaneNavigator mini={false} />
+                    <PaneNavigator mini={false} setIsOpen={setIsOpen} mode="portrait"/>
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>

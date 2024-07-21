@@ -71,27 +71,35 @@ const useStyles = makeStyles({
 interface IPaneNavigatorProp {
     mini: boolean;
     show?: boolean;
+    setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+    mode: string;
 };
 
-const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show}) => {
+const PaneNavigator: FC<IPaneNavigatorProp> = ({mini, show, setIsOpen, mode}) => {
     const styles = useStyles();
+
+    const _handleCloseDrawer = () => {
+        if(mode == "portrait" && setIsOpen != null) {
+            setIsOpen(false);
+        }        
+    }
 
     return mini == false ?
         <nav>
             <ul className={styles.containerMenu}>
-                <li>
+                <li onClick={_handleCloseDrawer}>
                     <NavLink to="/home/pembukuan/kode_rekening">                            
                         <BookRegular className={styles.icon24}/>    
                         <span>Pembukuan</span>                        
                     </NavLink>
                 </li>
-                <li>
+                <li onClick={_handleCloseDrawer}>
                     <NavLink to="/home/laporan">
                         <BookRegular className={styles.icon24}/> 
                         <span>Laporan</span>
                     </NavLink>
                 </li>
-                <li>
+                <li onClick={_handleCloseDrawer}>
                     <NavLink to="/home/pengaturan">
                         <BookRegular className={styles.icon24}/> 
                         <span>pengaturan</span>
