@@ -6,7 +6,6 @@ import { IQueryParamFilters } from "../../features/entities/query-param-filters"
 
 
 interface IDataGridKodeRekeningProps {
-    tab: string;
     initSelectedFilters: IQueryParamFilters;
 };
   
@@ -93,15 +92,14 @@ const columns: TableColumnDefinition<IAkun>[] = [
     }),
 ]
   
-const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelectedFilters}) => {
-    const [currentPage] = useState<number>(initSelectedFilters.pageNumber!);
-    const [pageSize] = useState<number>(initSelectedFilters.pageSize!);
+const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({initSelectedFilters}) => {
+    // const [currentPage] = useState<number>(initSelectedFilters.pageNumber!);
+    // const [pageSize] = useState<number>(initSelectedFilters.pageSize!);
     const [queryParams] = useState<IQueryParamFilters>({
-        ...initSelectedFilters, pageNumber: currentPage, pageSize
+        ...initSelectedFilters
     });
     const { data: items, isLoading } = useGetDaftarAkunQuery(queryParams);
-    return (<>
-    { tab == "0" ?
+    return (
         <DataGrid
             items={isLoading == true ? [] : items!}
             columns={columns}
@@ -125,10 +123,10 @@ const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelected
             <DataGridBody<IAkun>>
             {({ item, rowId }) => (
                 <DataGridRow<IAkun>
-                key={rowId}
-                selectionCell={{
-                    checkboxIndicator: { "aria-label": "Select row" },
-                }}
+                    key={rowId}
+                    selectionCell={{
+                        checkboxIndicator: { "aria-label": "Select row" },
+                    }}
                 >
                 {({ renderCell }) => (
                     <DataGridCell>{renderCell(item)}</DataGridCell>
@@ -136,9 +134,7 @@ const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelected
                 </DataGridRow>
             )}
             </DataGridBody>
-        </DataGrid> : null
-    }
-    </>);
+        </DataGrid> );
 };
 
 export default DataGridKodeRekening;

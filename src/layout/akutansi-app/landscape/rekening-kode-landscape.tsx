@@ -157,7 +157,23 @@ const useStyles = makeStyles({
 const RekeningKodeLandScapeLayout: FC = () => {
     const styles = useStyles();    
     const [selectedTabId, setSelectedTabId] = useState<string>("0");
-    const [queryParams] = useState<IQueryParamFilters>({
+    const [filterAkun, setFilterAkun] = useState<IQueryParamFilters>({
+      pageNumber: 1,
+      pageSize: 25,
+      filters: [
+        {
+          fieldName: 'kelompok_akun',
+          value: '0'
+        },
+      ],
+      sortOrders: [
+        {
+          fieldName: 'id',
+          value: 'ASC'
+        },
+      ],
+    });
+    const { data: tabs } = useGetDaftarKelompokAkunQuery({
       pageNumber: 1,
       pageSize: 25,
       filters: [],
@@ -168,10 +184,27 @@ const RekeningKodeLandScapeLayout: FC = () => {
         },
       ],
     });
-    const { data: tabs } = useGetDaftarKelompokAkunQuery(queryParams);
 
     const onTabSelect = (tabId: string) => {
       setSelectedTabId(tabId);
+      setFilterAkun(
+        {        
+          pageNumber: 1,
+          pageSize: 25,
+          filters: [
+            {
+              fieldName: 'kelompok_akun',
+              value: tabId
+            },
+          ],
+          sortOrders: [
+            {
+              fieldName: 'id',
+              value: 'ASC'
+            },
+          ],
+        }
+      );
     };
 
     return (
@@ -215,20 +248,8 @@ const RekeningKodeLandScapeLayout: FC = () => {
           {tabs != undefined && 
             <div className={styles.panels}>
               <DataGridKodeRekening 
-                tab={selectedTabId} 
-                initSelectedFilters={
-                  {
-                    pageNumber: 1,
-                    pageSize: 25,
-                    filters: [],
-                    sortOrders: [
-                      {
-                        fieldName: 'kode',
-                        value: 'ASC'
-                      },
-                    ],
-                  }
-                }
+                key={selectedTabId}
+                initSelectedFilters={filterAkun}
               />
             </div> 
           }           

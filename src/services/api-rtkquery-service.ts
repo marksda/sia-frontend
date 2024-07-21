@@ -169,8 +169,8 @@ export const siaApi = createApi({
                 invalidatesTags: (result) => result ? ['Akun']:['Kosong']
             }),
             getDaftarAkun: builder.query<IAkun[], IQueryParamFilters>({
-                query: (_queryParams) => ({
-                    url: `/akun/list`,
+                query: (queryParams) => ({
+                    url: `/akun/list?filter=${JSON.stringify(queryParams)}`,
                     method: 'GET',
                 }),
                 providesTags: ['Akun']
