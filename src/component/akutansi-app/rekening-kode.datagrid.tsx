@@ -142,4 +142,3 @@ const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({tab, initSelected
 };
 
 export default DataGridKodeRekening;
-  
