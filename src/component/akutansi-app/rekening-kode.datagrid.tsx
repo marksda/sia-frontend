@@ -95,10 +95,10 @@ const columns: TableColumnDefinition<IAkun>[] = [
 const DataGridKodeRekening: FC<IDataGridKodeRekeningProps> = ({initSelectedFilters}) => {
     // const [currentPage] = useState<number>(initSelectedFilters.pageNumber!);
     // const [pageSize] = useState<number>(initSelectedFilters.pageSize!);
-    const [queryParams] = useState<IQueryParamFilters>({
+    const [filter] = useState<IQueryParamFilters>({
         ...initSelectedFilters
     });
-    const { data: items, isLoading } = useGetDaftarAkunQuery(queryParams);
+    const { data: items, isLoading } = useGetDaftarAkunQuery(filter);
     return (
         <DataGrid
             items={isLoading == true ? [] : items!}
