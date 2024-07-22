@@ -1,6 +1,13 @@
 import { makeStyles, tokens } from "@fluentui/react-components";
 import { FC } from "react";
 import ToolBar, { ItemBar } from "../../../component/tool-bar";
+import {
+    CalendarMonthRegular,
+    CalendarMonthFilled,
+    bundleIcon,
+} from "@fluentui/react-icons";
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 
 const useStyles = makeStyles({
@@ -26,22 +33,27 @@ const DataItemBars: ItemBar[] = [
     {
         id: "akun",
         nama: "Akun",
-        icon: null
+        icon: <CalendarMonth />
     },
     {
         id: "jurnal",
         nama: "Jurnal",
-        icon: null
+        icon: <CalendarMonth />
     },
     {
         id: "buku_pembantu",
         nama: "Buku Pembantu",
-        icon: null
+        icon: <CalendarMonth />
     },
     {
         id: "buku_besar",
         nama: "Buku Besar",
-        icon: null
+        icon: <CalendarMonth />
+    },
+    {
+        id: "lain",
+        nama: "Lain-lain",
+        icon: <CalendarMonth />
     },
 ];
 
