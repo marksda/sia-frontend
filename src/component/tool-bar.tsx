@@ -20,9 +20,10 @@ interface IOverflowSelectionItemProps {
   onSelectItem?: (item: string) => void;  
   selected?: boolean;  
   id: string;
+  nama: string;
 }
 
-const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, selected, onSelectItem}) => {
+const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, selected, onSelectItem}) => {
   const onClick = () => {
     onSelectItem!(id);
   };
@@ -34,7 +35,7 @@ const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, selec
         appearance={selected ? "primary" : "secondary"}
         onClick={onClick}
       >
-        {id}
+        {nama}
       </Button>
     </OverflowItem>
   );
@@ -111,24 +112,24 @@ const OverflowMenu: React.FC<IOverflowMenuProps> = ({ itemIds, onSelect }) => {
 };
 
 //----- ToolBar component -----//
-const useToolBarStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: "8px",
-  },
-});
+// const useToolBarStyles = makeStyles({
+//   root: {
+//     display: "flex",
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     padding: "8px",
+//   },
+// });
 
 interface IToolBarProp {
   data: ItemBar[]
 };
 
 const ToolBar: FC<IToolBarProp> = ({data}) => {
-  const styles = useToolBarStyles();
+  // const styles = useToolBarStyles();
   const [selected, setSelected] = useState<string>(data[0].id);
 
-  const onSelect = (itemId: string) => {
+  const onSelect = (itemId: string): void => {
     setSelected(itemId);
   };
 
@@ -140,7 +141,8 @@ const ToolBar: FC<IToolBarProp> = ({data}) => {
           <OverflowSelectionItem
             onSelectItem={onSelect}
             key={i.id}
-            id={i.nama}
+            id={i.id}
+            nama={i.nama}
             selected={selected === i.id}
           />
           )
