@@ -1,28 +1,131 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger, Overflow, OverflowItem, OverflowItemProps, useIsOverflowItemVisible, useOverflowMenu } from "@fluentui/react-components";
+import { Button, makeStyles, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Overflow, OverflowItem, tokens, useIsOverflowItemVisible, useOverflowMenu } from "@fluentui/react-components";
 import { FC, useState } from "react";
+import {
+  MoreHorizontalRegular,
+  MoreHorizontalFilled,
+  bundleIcon,
+} from "@fluentui/react-icons";
 
-//----- OverflowMenu -----//
-// const useOverflowMenuStyle = makeStyles({
-//     menu: {
-//       backgroundColor: tokens.colorNeutralBackground1,
-//     },
-//     menuButton: {
-//       alignSelf: "center",
-//     },
-// });
+const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
+
+//----- OverflowMenuItem -----//
 export type ItemBar = {
     id: string;
     nama: string;
     icon: React.ReactElement|null;
 };
 
+interface IOverflowSelectionItemProps {
+  onSelectItem?: (item: string) => void;  
+  selected?: boolean;  
+  id: string;
+}
+
+const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, selected, onSelectItem}) => {
+  const onClick = () => {
+    onSelectItem!(id);
+  };
+
+  return (
+    <OverflowItem id={id} priority={selected ? 1000 : undefined}>
+      <Button
+        aria-pressed={selected ? "true" : "false"}
+        appearance={selected ? "primary" : "secondary"}
+        onClick={onClick}
+      >
+        {id}
+      </Button>
+    </OverflowItem>
+  );
+}
+
+interface IOverflowMenuItemProp {
+  id: string;
+  onClick:  () => void;
+}
+
+const OverflowMenuItem: React.FC<IOverflowMenuItemProp> = ({id, onClick}) => {
+  const isVisible = useIsOverflowItemVisible(id);
+
+  if (isVisible) {
+    return null;
+  }
+
+  return <MenuItem onClick={onClick}>{id}</MenuItem>;
+};
+
+//----- OverflowMenu -----//
+const useOverflowMenuStyles = makeStyles({
+  menu: {
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  menuButton: {
+    alignSelf: "center",
+  },
+});
+
+interface IOverflowMenuProps {
+  itemIds: ItemBar[]; 
+  onSelect: (itemId: string) => void;
+}
+
+const OverflowMenu: React.FC<IOverflowMenuProps> = ({ itemIds, onSelect }) => {
+  const styles = useOverflowMenuStyles();
+  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  const onItemClick = (tabId: string) => {
+    onSelect?.(tabId);
+  };
+
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button
+          appearance="transparent"
+          className={styles.menuButton}
+          ref={ref}
+          icon={<MoreHorizontal />}
+          aria-label={`${overflowCount} more tabs`}
+          role="tab"
+        />
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          {itemIds.map((i) => (
+            <OverflowMenuItem 
+              key={i.id} 
+              id={i.nama} 
+              onClick={() => onItemClick(i.id!)} 
+            />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+//----- ToolBar component -----//
+const useToolBarStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: "8px",
+  },
+});
+
 interface IToolBarProp {
   data: ItemBar[]
 };
 
 const ToolBar: FC<IToolBarProp> = ({data}) => {
-  // const styles = useOverflowMenuStyle();
+  const styles = useToolBarStyles();
   const [selected, setSelected] = useState<string>(data[0].id);
 
   const onSelect = (itemId: string) => {
@@ -46,69 +149,6 @@ const ToolBar: FC<IToolBarProp> = ({data}) => {
       <OverflowMenu itemIds={data} onSelect={onSelect} />
       </div>
     </Overflow>
-  );
-};
-
-const OverflowSelectionItem: React.FC<{
-  onSelectItem?: (item: string) => void;
-  selected?: boolean;
-  id: string;
-}> = (props) => {
-  const onClick = () => {
-    props.onSelectItem?.(props.id);
-  };
-
-  return (
-    <OverflowItem id={props.id} priority={props.selected ? 1000 : undefined}>
-      <Button
-        aria-pressed={props.selected ? "true" : "false"}
-        appearance={props.selected ? "primary" : "secondary"}
-        onClick={onClick}
-      >
-        {props.id}
-      </Button>
-    </OverflowItem>
-  );
-}
-
-const OverflowMenuItem: React.FC<
-  Pick<OverflowItemProps, "id"> & { onClick: () => void }
-> = (props) => {
-  const { id, onClick } = props;
-  const isVisible = useIsOverflowItemVisible(id);
-
-  if (isVisible) {
-    return null;
-  }
-
-  return <MenuItem onClick={onClick}>{id}</MenuItem>;
-};
-
-const OverflowMenu: React.FC<{
-  itemIds: ItemBar[];
-  onSelect: (itemId: string) => void;
-}> = ({ itemIds, onSelect }) => {
-  const { ref, overflowCount, isOverflowing } =
-    useOverflowMenu<HTMLButtonElement>();
-
-  if (!isOverflowing) {
-    return null;
-  }
-
-  return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <MenuButton ref={ref}>+{overflowCount} items</MenuButton>
-      </MenuTrigger>
-
-      <MenuPopover>
-        <MenuList>
-          {itemIds.map((i) => (
-            <OverflowMenuItem onClick={() => onSelect(i.id)} key={i.id} id={i.nama} />
-          ))}
-        </MenuList>
-      </MenuPopover>
-    </Menu>
   );
 };
 

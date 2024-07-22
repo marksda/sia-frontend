@@ -42,12 +42,12 @@ const DataItemBars: ItemBar[] = [
     },
     {
         id: "buku_pembantu",
-        nama: "Buku Pembantu",
+        nama: "Sub. Ledger",
         icon: <CalendarMonth />
     },
     {
         id: "buku_besar",
-        nama: "Buku Besar",
+        nama: "Ledger",
         icon: <CalendarMonth />
     },
     {
