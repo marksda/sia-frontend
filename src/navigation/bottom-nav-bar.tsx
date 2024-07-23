@@ -180,7 +180,7 @@ const BottomNavBar: FC<IBottomNavBarProp> = ({data}) => {
   return (
     <Overflow>
         <div className={ mergeClasses(styles.container, styles.item)}>
-            <nav >
+            <nav>
                 {
                 data.map((i) => (
                     <OverflowSelectionItem
