@@ -1,21 +1,23 @@
 import { FC } from "react";
 import { makeStyles, tokens } from "@fluentui/react-components";
-import ToolBar, { ItemBar } from "../../../component/tool-bar";
+import BottomNavBar, { ItemBar } from "../../../navigation/bottom-nav-bar";
 import {
     CalendarMonthRegular,
     CalendarMonthFilled,
+    BookRegular,
+    BookFilled,
     bundleIcon,
 } from "@fluentui/react-icons";
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const Book = bundleIcon(BookFilled, BookRegular);
 
 
 const useStyles = makeStyles({
     root: {
         display: "grid",
-        gridTemplateRows: "auto 58px",
+        gridTemplateRows: "auto 68px",
         gridTemplateColumns: "auto",
-        height: "100%"
     },
     main: {
         // flex: 1,
@@ -24,36 +26,46 @@ const useStyles = makeStyles({
         // height: "fit-content",
     },
     toolBar: {
-        borderTop: `1px solid  ${tokens.colorNeutralBackground3Selected}`,        
-        // boxShadow: "rgba(0, 0, 0, 0.1) 0px -1px 0px 0px inset",
-    }
+        paddingTop: "8px",
+        borderTop: `1px solid  ${tokens.colorNeutralBackground3Selected}`,  
+    },
 });
 
 const DataItemBars: ItemBar[] = [
     {
         id: "akun",
         nama: "Akun",
-        icon: <CalendarMonth />
+        icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "jurnal",
         nama: "Jurnal",
-        icon: <CalendarMonth />
+        icon: <Book style={{fontSize: 24}}/>
     },
     {
         id: "buku_pembantu",
-        nama: "Sub. Ledger",
-        icon: <CalendarMonth />
+        nama: "S. Ledger",
+        icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "buku_besar",
         nama: "Ledger",
-        icon: <CalendarMonth />
+        icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "lain",
-        nama: "Lain-lain",
-        icon: <CalendarMonth />
+        nama: "Lain",
+        icon: <CalendarMonth style={{fontSize: 24}}/>
+    },
+    {
+        id: "lain2",
+        nama: "Lain2",
+        icon: <CalendarMonth style={{fontSize: 24}}/>
+    },
+    {
+        id: "lain3",
+        nama: "Lain3",
+        icon: <CalendarMonth style={{fontSize: 24}}/>
     },
 ];
 
@@ -64,7 +76,7 @@ const RekeningPortraitLayout: FC = () => {
         <div className={styles.root}>
             <div className={styles.main}>main</div>
             <div className={styles.toolBar}>
-                <ToolBar data={DataItemBars} />
+                <BottomNavBar data={DataItemBars} />
             </div>
         </div>
     );

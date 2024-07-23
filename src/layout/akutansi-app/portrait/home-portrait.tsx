@@ -11,7 +11,8 @@ const useStyles = makeStyles({
         display: "grid",
         gridTemplateRows: "40px auto",        
         gridTemplateColumns: "auto",
-        height: `${window.innerHeight}px`
+        // height: `${window.innerHeight}px`,
+        height: '100vh',
     },
     drawer: {
         height: "100vh"
