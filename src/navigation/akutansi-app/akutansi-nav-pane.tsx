@@ -88,7 +88,7 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({sideBar, show, setIsOpen, mode})
         <nav>
             <ul className={styles.containerMenu}>
                 <li onClick={_handleCloseDrawer}>
-                    <NavLink to="/home/pembukuan/kode_rekening">                            
+                    <NavLink to="/home/pembukuan/akun">                            
                         <BookRegular className={styles.icon24}/>    
                         <span>Pembukuan</span>                        
                     </NavLink>
@@ -118,7 +118,7 @@ const PaneNavigator: FC<IPaneNavigatorProp> = ({sideBar, show, setIsOpen, mode})
                         withArrow
                         positioning="after"
                     >
-                        <NavLink to="/home/pembukuan/kode_rekening">                            
+                        <NavLink to="/home/pembukuan/akun">                            
                             <BookRegular className={styles.icon24}/>                            
                         </NavLink>
                     

@@ -1,12 +1,16 @@
 import { Button, makeStyles, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Overflow, OverflowItem, tokens, useIsOverflowItemVisible, useOverflowMenu } from "@fluentui/react-components";
 import { FC, useState } from "react";
 import {
+  BookRegular,
+  BookFilled,
   MoreHorizontalRegular,
   MoreHorizontalFilled,
   bundleIcon,
 } from "@fluentui/react-icons";
+import { NavLink } from "react-router-dom";
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
+const Book = bundleIcon(BookFilled, BookRegular);
 
 
 //----- OverflowMenuItem -----//
@@ -22,21 +26,38 @@ interface IOverflowSelectionItemProps {
   id: string;
   nama: string;
 }
+const OverflowSelectionItemStyles = makeStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  customBackgroundColor: {
+    // backgroundColor: tokens.colorBrandBackground2Hover
+    // backgroundColor: tokens.colorNeutralForegroundStaticInverted,
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2Hover
+    }
+  },
+  icon24: { fontSize: "24px" },
+  icon32: { fontSize: "32px" },
+  icon48: { fontSize: "48px" },
+});
 
 const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, selected, onSelectItem}) => {
-  const onClick = () => {
-    onSelectItem!(id);
-  };
+  const styles = OverflowSelectionItemStyles();
+
+  // const onClick = () => {
+  //   onSelectItem!(id);
+  // };
 
   return (
-    <OverflowItem id={id} priority={selected ? 1000 : undefined}>
-      <Button
-        aria-pressed={selected ? "true" : "false"}
-        appearance={selected ? "primary" : "secondary"}
-        onClick={onClick}
-      >
-        {nama}
-      </Button>
+    <OverflowItem id={id} priority={selected ? 1000 : undefined} >
+      <li>
+        <NavLink to={`/home/pembukuan/${id}`}>
+          <Book className={styles.icon24}/>
+        </NavLink>        
+        <span>{nama}</span>
+      </li>
     </OverflowItem>
   );
 }
@@ -112,21 +133,51 @@ const OverflowMenu: React.FC<IOverflowMenuProps> = ({ itemIds, onSelect }) => {
 };
 
 //----- ToolBar component -----//
-// const useToolBarStyles = makeStyles({
-//   root: {
-//     display: "flex",
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     padding: "8px",
-//   },
-// });
+const useToolBarStyles = makeStyles({
+  containerToolBar: {
+    listStyleType: "none",
+    marginTop: "4px",
+    padding: "0px 8px 0px 0px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    // backgroundColor: tokens.colorBrandBackground,
+    '& li': {
+      display: "flex",
+      flexDirection: "column",
+    },
+    '& li a': {
+        display: 'flex',
+        borderRadius: "16px",
+        // flexDirection: "column",
+        // flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "4px 0px",
+        color: "#000",
+        width: "60px",
+        textDecoration: "none",
+        '& svg': {
+          padding: "0px",
+        },
+        '&.active': {
+            backgroundColor: tokens.colorCompoundBrandForeground1,
+            color: tokens.colorNeutralForegroundInverted,
+        },
+        '&:hover:not(.active)': {
+            backgroundColor: "red",  
+            color: tokens.colorStrokeFocus2,
+        }
+    }
+  },
+});
 
 interface IToolBarProp {
   data: ItemBar[]
 };
 
 const ToolBar: FC<IToolBarProp> = ({data}) => {
-  // const styles = useToolBarStyles();
+  const styles = useToolBarStyles();
   const [selected, setSelected] = useState<string>(data[0].id);
 
   const onSelect = (itemId: string): void => {
@@ -135,7 +186,7 @@ const ToolBar: FC<IToolBarProp> = ({data}) => {
 
   return (
     <Overflow>
-      <div>
+      <nav><ul className={styles.containerToolBar}>
       {
         data.map((i) => (
           <OverflowSelectionItem
@@ -149,7 +200,7 @@ const ToolBar: FC<IToolBarProp> = ({data}) => {
         )
       }
       <OverflowMenu itemIds={data} onSelect={onSelect} />
-      </div>
+      </ul></nav>
     </Overflow>
   );
 };

@@ -26,7 +26,7 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
           element: (<RekeningScreen />),
           children: [
             {
-              path: "kode_rekening",
+              path: "akun",
               element: (<RekeningKodeScreen />),
             },
           ],
