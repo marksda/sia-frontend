@@ -6,6 +6,7 @@ import PembukuanPortraitLayout from "../../layout/akutansi-app/portrait/pembukua
 import PembukuanLandScapeLayout from "../../layout/akutansi-app/landscape/pembukuan-landscape";
 import AkunPortraitLayout from "../../layout/akutansi-app/portrait/akun-portrait";
 import AkunLandScapeLayout from "../../layout/akutansi-app/landscape/akun-landscape";
+import JurnalPortraitLayout from "../../layout/akutansi-app/portrait/jurnal-portrait";
 
 export const HomeScreen: FC = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
@@ -28,5 +29,5 @@ export const HomePembukuanAkunScreen: FC = () => {
 export const HomePembukuanJurnalScreen: FC = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
 
-    return isPortrait == true ? <HomePortraitLayout /> : <HomeLandScapeLayout />;
+    return isPortrait == true ? <JurnalPortraitLayout /> : <HomeLandScapeLayout />;
 };
