@@ -1,10 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AkutansiApp from "../../app/AkutansiApp";
-import HomeScreen from "../../scenes/akutansi-app/home-page.component";
 import SignInScreen from "../../scenes/akutansi-app/sign-in.component";
 import { FC } from "react";
-import RekeningScreen from "../../scenes/akutansi-app/rekening-page.component";
-import RekeningKodeScreen from "../../scenes/akutansi-app/rekening-kode-page.component";
+import { HomeScreen, HomePembukuanJurnalScreen, HomePembukuanAkunScreen, HomePembukuanScreen, HomePembukuanAkunKodeScreen } from "../../scenes/akutansi-app/home-page.component";
 
 
 interface IAkutansiRouteProvider {
@@ -23,11 +21,21 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
       children: [
         {
           path: "pembukuan",
-          element: (<RekeningScreen />),
+          element: (<HomePembukuanScreen />),
           children: [
             {
               path: "akun",
-              element: (<RekeningKodeScreen />),
+              element: (<HomePembukuanAkunScreen />),
+              children: [
+                {
+                  path: "kode_rekening",
+                  element: (<HomePembukuanAkunKodeScreen />),
+                },
+              ],
+            },
+            {
+              path: "Jurnal",
+              element: (<HomePembukuanJurnalScreen />),
             },
           ],
         },
