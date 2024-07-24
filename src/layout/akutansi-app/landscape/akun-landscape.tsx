@@ -154,7 +154,7 @@ const useStyles = makeStyles({
     }
 });
 
-const RekeningKodeLandScapeLayout: FC = () => {
+const AkunLandScapeLayout: FC = () => {
     const styles = useStyles();    
     const [selectedTabId, setSelectedTabId] = useState<string>("0");
     const [filterAkun, setFilterAkun] = useState<IQueryParamFilters>({
@@ -257,4 +257,4 @@ const RekeningKodeLandScapeLayout: FC = () => {
     );
 };
 
-export default RekeningKodeLandScapeLayout;
+export default AkunLandScapeLayout;

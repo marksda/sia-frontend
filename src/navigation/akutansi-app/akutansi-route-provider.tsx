@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AkutansiApp from "../../app/AkutansiApp";
 import SignInScreen from "../../scenes/akutansi-app/sign-in.component";
 import { FC } from "react";
-import { HomeScreen, HomePembukuanJurnalScreen, HomePembukuanAkunScreen, HomePembukuanScreen, HomePembukuanAkunKodeScreen } from "../../scenes/akutansi-app/home-page.component";
+import { HomeScreen, HomePembukuanJurnalScreen, HomePembukuanAkunScreen, HomePembukuanScreen } from "../../scenes/akutansi-app/home-page.component";
 
 
 interface IAkutansiRouteProvider {
@@ -26,12 +26,6 @@ const AkutansiRouteProvider: FC<IAkutansiRouteProvider>  = ({mainPath}) => {
             {
               path: "akun",
               element: (<HomePembukuanAkunScreen />),
-              children: [
-                {
-                  path: "kode_rekening",
-                  element: (<HomePembukuanAkunKodeScreen />),
-                },
-              ],
             },
             {
               path: "Jurnal",

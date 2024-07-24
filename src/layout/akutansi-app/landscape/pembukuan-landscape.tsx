@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 });
 
-const RekeningLandScapeLayout: FC = () => {
+const PembukuanLandScapeLayout: FC = () => {
     const styles = useStyles();
 
     return (
@@ -34,4 +34,4 @@ const RekeningLandScapeLayout: FC = () => {
     );
 };
 
-export default RekeningLandScapeLayout;
+export default PembukuanLandScapeLayout;

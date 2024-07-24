@@ -69,7 +69,7 @@ const DataItemBars: ItemBar[] = [
     },
 ];
 
-const RekeningPortraitLayout: FC = () => {
+const PembukuanPortraitLayout: FC = () => {
     const styles = useStyles();
 
     return (
@@ -82,4 +82,4 @@ const RekeningPortraitLayout: FC = () => {
     );
 };
 
-export default RekeningPortraitLayout;
+export default PembukuanPortraitLayout;

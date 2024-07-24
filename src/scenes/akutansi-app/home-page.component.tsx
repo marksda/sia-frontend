@@ -2,10 +2,10 @@ import { useMediaQuery } from "react-responsive";
 import HomeLandScapeLayout from "../../layout/akutansi-app/landscape/home-landscape";
 import HomePortraitLayout from "../../layout/akutansi-app/portrait/home-portrait";
 import { FC } from "react";
-import RekeningPortraitLayout from "../../layout/akutansi-app/portrait/rekening-portrait";
-import RekeningLandScapeLayout from "../../layout/akutansi-app/landscape/rekening-landscape";
-import RekeningKodePortraitLayout from "../../layout/akutansi-app/portrait/rekening-kode-portrait";
-import RekeningKodeLandScapeLayout from "../../layout/akutansi-app/landscape/rekening-kode-landscape";
+import PembukuanPortraitLayout from "../../layout/akutansi-app/portrait/pembukuan-portrait";
+import PembukuanLandScapeLayout from "../../layout/akutansi-app/landscape/pembukuan-landscape";
+import AkunPortraitLayout from "../../layout/akutansi-app/portrait/akun-portrait";
+import AkunLandScapeLayout from "../../layout/akutansi-app/landscape/akun-landscape";
 
 export const HomeScreen: FC = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
@@ -16,19 +16,13 @@ export const HomeScreen: FC = () => {
 export const HomePembukuanScreen: FC = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
 
-    return isPortrait == true ? <RekeningPortraitLayout /> : <RekeningLandScapeLayout />;
+    return isPortrait == true ? <PembukuanPortraitLayout /> : <PembukuanLandScapeLayout />;
 };
 
 export const HomePembukuanAkunScreen: FC = () => {    
     const isPortrait = useMediaQuery({ maxWidth: 600 });
 
-    return isPortrait == true ? <RekeningKodePortraitLayout /> : <RekeningKodeLandScapeLayout />;
-};
-
-export const HomePembukuanAkunKodeScreen: FC = () => {    
-    const isPortrait = useMediaQuery({ maxWidth: 600 });
-
-    return isPortrait == true ? <RekeningKodePortraitLayout /> : <RekeningKodeLandScapeLayout />;
+    return isPortrait == true ? <AkunPortraitLayout /> : <AkunLandScapeLayout />;
 };
 
 export const HomePembukuanJurnalScreen: FC = () => {    
