@@ -110,7 +110,7 @@ const useBottomNavBarStyles = makeStyles({
   item: {        
     '& a': {           
         display: "inline-block",   
-        textDecoration: "none",    
+        textDecoration: "none",   
         '& span': {
             display: "inline-block", 
             textAlign: "center", 
@@ -125,7 +125,7 @@ const useBottomNavBarStyles = makeStyles({
                 borderRadius: "16px", 
             }  
         },
-        '&:not(.active) div': {
+        ':not(.active) div': {
             color: tokens.colorStrokeFocus2,
             padding: "0px 18px",  
         },
@@ -134,29 +134,6 @@ const useBottomNavBarStyles = makeStyles({
         },        
     },
   }
-//     '& ul': {
-//         listStyleType: "none",
-//     },
-//     '& ul li a': {
-//         display: 'flex',
-//         borderRadius: "16px",
-//         justifyContent: "center",
-//         padding: "4px 16px",
-//         color: "#000",
-//         textDecoration: "none",
-//         '& svg': {
-//           padding: "0px",
-//         },
-//         '&.active': {
-//             backgroundColor: tokens.colorCompoundBrandForeground1,
-//             color: tokens.colorNeutralForegroundInverted,
-//         },
-//         '&:hover:not(.active)': {
-//             backgroundColor: "red",  
-//             color: tokens.colorStrokeFocus2,
-//         }
-//     }
-//   },
 });
 
 interface IBottomNavBarProp {
