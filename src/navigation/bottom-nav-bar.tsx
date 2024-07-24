@@ -6,15 +6,9 @@ import {
   bundleIcon,
 } from "@fluentui/react-icons";
 import { NavLink } from "react-router-dom";
+import { ItemBar } from "../features/entities/item-bar";
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
-
-//----- OverflowMenuItem -----//
-export type ItemBar = {
-    id: string;
-    nama: string;
-    icon: React.ReactElement|null;
-};
 
 interface IOverflowSelectionItemProps {
   selected?: boolean;  
@@ -166,7 +160,7 @@ const useBottomNavBarStyles = makeStyles({
 });
 
 interface IBottomNavBarProp {
-  data: ItemBar[]
+  data: ItemBar[];
 };
 
 const BottomNavBar: FC<IBottomNavBarProp> = ({data}) => {

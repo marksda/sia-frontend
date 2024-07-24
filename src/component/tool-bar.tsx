@@ -8,17 +8,11 @@ import {
   bundleIcon,
 } from "@fluentui/react-icons";
 import { NavLink } from "react-router-dom";
+import { ItemBar } from "../features/entities/item-bar";
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 const Book = bundleIcon(BookFilled, BookRegular);
 
-
-//----- OverflowMenuItem -----//
-export type ItemBar = {
-    id: string;
-    nama: string;
-    icon: React.ReactElement|null;
-};
 
 interface IOverflowSelectionItemProps {
   onSelectItem?: (item: string) => void;  
@@ -43,7 +37,7 @@ const OverflowSelectionItemStyles = makeStyles({
   icon48: { fontSize: "48px" },
 });
 
-const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, selected, onSelectItem}) => {
+const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, selected}) => {
   const styles = OverflowSelectionItemStyles();
 
   // const onClick = () => {
