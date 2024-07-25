@@ -37,36 +37,43 @@ const DataItemBars: ItemBar[] = [
     {
         id: "akun",
         nama: "Akun",
+        link: "/home/pembukuan/akun",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "jurnal",
         nama: "Jurnal",
+        link: "/home/pembukuan/jurnal",
         icon: <Book style={{fontSize: 24}}/>
     },
     {
         id: "buku_pembantu",
         nama: "S. Ledger",
+        link: "/home/pembukuan/buku_pembantu",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "buku_besar",
         nama: "Ledger",
+        link: "/home/pembukuan/buku_besar",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "lain",
         nama: "Lain",
+        link: "/home/pembukuan/lain",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "lain2",
         nama: "Lain2",
+        link: "/home/pembukuan/lain2",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
     {
         id: "lain3",
         nama: "Lain3",
+        link: "/home/pembukuan/lain3",
         icon: <CalendarMonth style={{fontSize: 24}}/>
     },
 ];

@@ -14,13 +14,14 @@ interface IOverflowSelectionItemProps {
   selected?: boolean;  
   id: string;
   nama: string;
+  link: string;
   icon: React.ReactElement|null;
 };
 
-const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, selected, icon}) => {
+const OverflowSelectionItem: React.FC<IOverflowSelectionItemProps> = ({id, nama, link, selected, icon}) => {
   return (
     <OverflowItem id={id} priority={selected ? 1000 : undefined} >
-        <NavLink to={`/home/pembukuan/${id}`}>
+        <NavLink to={link}>
             <div>{icon}</div>
             <span>{nama}</span>            
         </NavLink>     
@@ -159,6 +160,7 @@ const BottomNavBar: FC<IBottomNavBarProp> = ({data}) => {
                         id={i.id}
                         nama={i.nama}
                         icon={i.icon}
+                        link={i.link}
                         selected={selected === i.id}
                     />
                     )

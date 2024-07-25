@@ -2,9 +2,21 @@ import { Button, Drawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, makeStyles
 import { useState } from "react";
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import AppBar from "../../../navigation/akutansi-app/akutansi-nav-app-bar";
-import PaneNavigator from "../../../navigation/akutansi-app/akutansi-nav-pane";
 import { Outlet } from "react-router-dom";
 import { toUpperCaseFirstLetter } from "../../../features/utils/parsing-text";
+import SideNavBar from "../../../navigation/side-nav-bar";
+import { ItemBar } from "../../../features/entities/item-bar";
+import {
+    BookRegular,
+    BookFilled,
+    SettingsRegular,
+    SettingsFilled,
+    bundleIcon,
+} from "@fluentui/react-icons";
+
+const Book = bundleIcon(BookFilled, BookRegular);
+const Setting = bundleIcon(SettingsFilled, SettingsRegular);
+
 
 const useStyles = makeStyles({
     content: {
@@ -21,6 +33,27 @@ const useStyles = makeStyles({
         padding: "12px 24px 8px 24px"
     },
 });
+
+const DataItemBars: ItemBar[] = [
+    {
+        id: "pembukuan",
+        nama: "Pembukuan",
+        link: "/home/pembukuan/akun",
+        icon: <Book style={{fontSize: 24}}/>
+    },
+    {
+        id: "pelaporan",
+        nama: "Pelaporan",
+        link: "/home/pelaporan",
+        icon: <Book style={{fontSize: 24}}/>
+    },
+    {
+        id: "pengaturan",
+        nama: "Pengaturan",
+        link: "/home/pengaturan",
+        icon: <Setting style={{fontSize: 24}}/>
+    },
+];
 
 const HomePortraitLayout = () => {
     const styles = useStyles();
@@ -56,7 +89,7 @@ const HomePortraitLayout = () => {
                     </DrawerHeaderTitle>
                 </DrawerHeader>
                 <DrawerBody>
-                    <PaneNavigator sideBar={false} setIsOpen={setIsOpen} mode="portrait"/>
+                    <SideNavBar type="standart" hide={!isOpen} data={DataItemBars} setIsOpen={setIsOpen}/>
                 </DrawerBody>
             </Drawer>
             <div className={styles.content}>
